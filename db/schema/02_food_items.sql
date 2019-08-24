@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS food_items CASCADE;
+
+CREATE TABLE food_items (
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  category VARCHAR(255) NOT NULL,
+  cost SMALLINT NOT NULL,
+  description TEXT
+  );
