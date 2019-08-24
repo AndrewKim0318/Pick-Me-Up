@@ -5,20 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Registration</title>
+
+  <link rel="stylesheet" href="/styles/registration.css">
+  <link rel="stylesheet" href="/styles/nav_bar.css">
+  <link rel="stylesheet" href="/styles/layout.css">
 </head>
+
 <body>
     <% include partials/_navbar.ejs %>
 
-    <div>
-      <form action="/registration" method="POST">
+    <div class="registration-container">
+      <form action="/registration" method="POST" class="registration-form">
         <h3 class="registration-title"> Register </h3>
-        <label for="name">Name</label>
-        <input type="text" class="registration-name" name="name">
-        <label for="phone-number">Phone Number</label>
-        <input type="text" class="registration-phone-number" name="phone-number">
-        <label for="password">Password</label>
-        <input type="text" class="registration-password" name="password">
-        <button type="submit">register</button>
+        <div class="registration-name-container">
+          <label for="name" class="registration-label">Name:</label>
+          <input type="text" class="registration-input" name="name">
+        </div>
+        <div class="registration-phone-container">
+          <label for="phone-number" class="registration-label">Phone Number:</label>
+          <input type="text" class="registration-input" name="phone-number">
+        </div>
+        <div class="registration-password-container">
+          <label for="password" class="registration-label">Password:</label>
+          <input type="text" class="registration-input" name="password">
+        </div>
+        <button type="submit" class="registration-button">register</button>
       </form>
 
     </div>

@@ -1,0 +1,88 @@
+.profile-container {
+  display: grid;
+  grid-template-rows: 50px repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.profile-navbar {
+  background-color: white;
+  align-self: center;
+  justify-self: center;
+  grid-row: 1;
+  grid-column: 2;
+  padding: 1em;
+}
+
+.edit-profile-container {
+  grid-row: 2;
+  grid-column: 2;
+  padding: 1em;
+}
+
+.order-history {
+  grid-row:3;
+  grid-column: 2;
+  padding: 1em;
+}
+
+.profile-btn {
+  text-decoration: none;
+  padding: 1em;
+  letter-spacing: 2px;
+}
+
+.order-header {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  justify-items: center;
+}
+
+.order-date {
+  grid-column: 1;
+}
+
+.order-list {
+  grid-column: 2;
+}
+
+.order-cost {
+  grid-column: 3;
+}
+
+.edit-form {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.edit-phone-container {
+  padding: 1em;
+  grid-row: 1;
+  display: grid;
+  grid-template-columns: 150px 1fr;
+}
+
+.edit-password-container {
+  padding: 1em;
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: 150px 1fr;
+}
+
+.edit-button {
+  padding: 1em;
+  grid-row: 3;
+}
+
+.edit-label {
+  grid-column: 1;
+  justify-self: end;
+  align-self: center;
+  padding-right: 1em;
+}
+
+.edit-input {
+  grid-column: 2;
+  height: 100%;
+  align-self: center;
+}

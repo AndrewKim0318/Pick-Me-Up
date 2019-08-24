@@ -5,38 +5,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>User Profile</title>
+
+  <link rel="stylesheet" href="/styles/profile.css">
+  <link rel="stylesheet" href="/styles/nav_bar.css">
+  <link rel="stylesheet" href="/styles/layout.css">
 </head>
 
 <body>
   
   <% include partials/_navbar.ejs %>
   
-  <div class="nav-bar-wrapper">
-    <div class="nav-bar-card">
-      <a href="#" class="login-btn">Edit Profile</a>
-      <a href="#" class="reg-btn">Order History</a>
+  <main class="profile-container">
+    <div class="profile-navbar">
+      <a href="#" type="submit" class="profile-btn">Edit Profile</a>
+      <a href="#" type="submit" class="profile-btn">Order History</a>
     </div>
-  </div>
-
-  <section class="edit-profile-container">
-    <form action="/edit/profile">
-      <label for="phone-number">Phone Number</label>
-      <input type="text" class="edit-phone-number" name="phone-number">
-      <label for="password">Password</label>
-      <input type="text" class="edit-password" name="password">
-      <button type="submit">Save</button>
-    </form>
-  </section>
-
-  <section class="order-history">
-    <header>
-      <label for="date">Date</label>
-      <label for="order">Order</label>
-      <label for="cost">Total Cost</label>
-    </header>
-    <section class="order-history-container"></section>
-  </section>
-    
+       
+    <section class="edit-profile-container">
+      <form action="/edit/profile" method="POST" class="edit-form">
+        <div class="edit-phone-container">
+          <label for="phone-number" class="edit-label">Phone Number:</label>
+          <input type="text" class="edit-input" name="phone-number">
+        </div>
+        <div class="edit-password-container">
+          <label for="password" class="edit-label">Password:</label>
+          <input type="text" class="edit-input" name="password">
+        </div>
+        <button type="submit" class="edit-button">Save</button>
+      </form>
+    </section>
+  
+    <section class="order-history">
+      <header class="order-header">
+        <label for="date" class="order-date">Date</label>
+        <label for="order" class="order-list">Order</label>
+        <label for="cost" class="order-cost">Total Cost</label>
+      </header>
+      <section class="order-history-container"></section>
+    </section>
+  </main>
 </body>
 
 </html>
