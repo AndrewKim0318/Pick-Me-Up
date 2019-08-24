@@ -57,11 +57,11 @@ app.get('/', (req, res) => {
 });
 //------LOGIN PAGE------
 app.get('/login', (req, res) => {
-
+  res.render('login');
 });
 //-------REGISTRATION-------
 app.get('/registration', (req, res) => {
-
+  res.render('registration');
 });
 
 app.listen(PORT, () => {
