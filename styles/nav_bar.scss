@@ -1,0 +1,21 @@
+.nav-bar-wrapper {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  background-color: white;
+  top: 0;
+  margin: 0 auto;
+
+}
+
+.nav-bar-card {
+  display: flex;
+  justify-content: space-between;
+  letter-spacing: 4px;
+  line-height: 1.5;
+  padding: 1.5em;
+}
+
+.nav-button {
+  text-decoration: none;
+}
