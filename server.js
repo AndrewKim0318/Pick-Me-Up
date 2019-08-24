@@ -64,6 +64,10 @@ app.get('/registration', (req, res) => {
   res.render('registration');
 });
 
+app.get('/profile', (req, res) => {
+  res.render('profile')
+})
+
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });

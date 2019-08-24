@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>User Profile</title>
+</head>
+
+<body>
+  
+  <% include partials/_navbar.ejs %>
+  
+  <div class="nav-bar-wrapper">
+    <div class="nav-bar-card">
+      <a href="#" class="login-btn">Edit Profile</a>
+      <a href="#" class="reg-btn">Order History</a>
+    </div>
+  </div>
+
+  <section class="edit-profile-container">
+    <form action="/edit/profile">
+      <label for="phone-number">Phone Number</label>
+      <input type="text" class="edit-phone-number" name="phone-number">
+      <label for="password">Password</label>
+      <input type="text" class="edit-password" name="password">
+      <button type="submit">Save</button>
+    </form>
+  </section>
+
+  <section class="order-history">
+    <header>
+      <label for="date">Date</label>
+      <label for="order">Order</label>
+      <label for="cost">Total Cost</label>
+    </header>
+    <section class="order-history-container"></section>
+  </section>
+    
+</body>
+
+</html>
