@@ -3,3 +3,7 @@ public/styles
 .env
 *.log
 *.sqlite3
+build/
+.DS_Store
+.vscode/
+db/.DS_Store
