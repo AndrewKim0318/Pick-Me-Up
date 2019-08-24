@@ -5,19 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Login</title>
+  <link rel="stylesheet" href="/styles/login.css">
+  <link rel="stylesheet" href="/styles/nav_bar.css">
 </head>
 <body>
 
   <% include partials/_navbar.ejs %>
 
-  <div>
-    <form action="/login" method="POST">
+  <div class="log-in-container">
+    <form action="/login" method="POST" class="log-in-form">
       <h3 class="log-in-title"> Login </h3>
-      <label for="name">Name</label>
-      <input type="text" class="login-name" name="name">
-      <label for="password">Password</label>
-      <input type="text" class="login-password" name="password">
-      <button type="submit" >Login</button>
+      <div class="log-in-name-container">
+        <label for="name" class="log-in-label">Name:</label>
+        <input type="text" class="log-in-input" name="name">
+      </div>
+      <div class="log-in-password-container">
+        <label for="password" class="log-in-label">Password:</label>
+        <input type="text" class="log-in-input" name="password">
+      </div>
+      <button type="submit" class="log-in-submit-button">Login</button>
     </form>
   </div>
 
