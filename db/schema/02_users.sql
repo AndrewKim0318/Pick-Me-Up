@@ -5,7 +5,6 @@ CREATE TABLE users (
   name VARCHAR(255) NOT NULL,
   password VARCHAR(255) NOT NULL,
   phone_number VARCHAR(255) NOT NULL,
-  credit_card_number VARCHAR(255) NOT NULL,
-  credit_card_cvs VARCHAR(255) NOT NULL,
-  credit_card_exp VARCHAR(255) NOT NULL
+  store_id INTEGER REFERENCES stores(id) ON DELETE CASCADE,
+  order_count SMALLINT DEFAULT 0
   )

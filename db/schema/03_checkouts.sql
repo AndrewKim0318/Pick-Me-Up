@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS checkouts CASCADE;
+
+CREATE TABLE checkouts (
+  id SERIAL PRIMARY KEY NOT NULL,
+  user_id INT REFERENCES users(id) ON DELETE CASCADE,
+  picked_up BOOLEAN DEFAULT TRUE,
+  order_date DATE DEFAULT NOW(),
+  store_id INTEGER REFERENCES stores(id) ON DELETE CASCADE
+  );

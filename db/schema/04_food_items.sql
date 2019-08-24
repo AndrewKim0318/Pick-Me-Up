@@ -5,5 +5,7 @@ CREATE TABLE food_items (
   name VARCHAR(255) NOT NULL,
   category VARCHAR(255) NOT NULL,
   cost SMALLINT NOT NULL,
-  description TEXT
+  description TEXT,
+  photo_url VARCHAR(255) NOT NULL,
+  availability BOOLEAN DEFAULT TRUE
   );
