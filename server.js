@@ -35,7 +35,7 @@ app.use("/styles", sass({
   outputStyle: 'expanded'
 }));
 
-app.use(express.static("/public"));
+app.use(express.static(__dirname + "/public"));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
