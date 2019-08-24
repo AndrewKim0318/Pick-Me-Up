@@ -4,5 +4,42 @@ body {
   margin: 0;
   padding: 0;
 }
+.video {
+  position: relative;
+}
+.content-wrapper {
+  position: relative;
+}
 
+.scroll-menu-nav {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  white-space: nowrap;
+  padding: 1.5em;
+}
 
+.search-toggle {
+  display: flex;
+}
+.menu-item-btn {
+  text-decoration: none;
+}
+
+.menu-container {
+  display: block;
+  justify-content: space-between;
+  position: relative;
+  width: 50%;
+  border: 2px solid pink;
+}
+.number {
+  margin: 100px;
+}
+input {
+  text-align: center;
+}
