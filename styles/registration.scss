@@ -6,7 +6,7 @@
 .registration-form {
   grid-column: 2;
   display: grid;
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-rows: repeat(6, 1fr);
 }
 
 .registration-title {
@@ -20,20 +20,26 @@
   grid-template-columns: 150px 1fr;
 }
 
-.registration-phone-container {
+.registration-username-container {
   grid-row: 3;
   display: grid;
   grid-template-columns: 150px 1fr;
 }
 
-.registration-password-container {
+.registration-phone-container {
   grid-row: 4;
   display: grid;
   grid-template-columns: 150px 1fr;
 }
 
-.registration-button {
+.registration-password-container {
   grid-row: 5;
+  display: grid;
+  grid-template-columns: 150px 1fr;
+}
+
+.registration-button {
+  grid-row: 6;
 }
 
 .registration-label {
