@@ -1,7 +1,7 @@
 const express = require('express');
 const router  = express.Router();
-const bcrypt  = require("bcrypt");
-const users   = require("../server");
+const bcrypt = require("bcrypt");
+const users  = require("../server");
 
 const generateRandomString = function() {
   let shortURL = "";
@@ -37,7 +37,6 @@ module.exports = (db) => {
     }
 
     req.session.userId = id;
-    console.log(users);
 
     res.redirect("/");
   });
