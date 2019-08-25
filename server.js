@@ -42,32 +42,21 @@ app.use(express.static(__dirname + "/public"));
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 
+const loginRoutes = require("./routes/login");
+const registrationRoutes = require("./routes/registration");
+const profileRoutes = require("./routes/profile");
+const homepageRoutes = require("./routes/homepage")
+
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
+
+app.use("/login", loginRoutes(db));
+app.use("/registration", registrationRoutes(db));
+app.use("/profileRoutes", profileRoutes(db));
+app.use("/", homepageRoutes(db));
 // Note: mount other resources here, using the same pattern above
-
-
-// Home page
-// Warning: avoid creating more routes in this file!
-// Separate them into separate routes files (see above).
-//-----LANDING PAGE-----
-app.get('/', (req, res) => {
-  res.render('homepage');
-});
-//------LOGIN PAGE------
-app.get('/login', (req, res) => {
-  res.render('login');
-});
-//-------REGISTRATION-------
-app.get('/registration', (req, res) => {
-  res.render('registration');
-});
-
-app.get('/profile', (req, res) => {
-  res.render('profile')
-})
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
