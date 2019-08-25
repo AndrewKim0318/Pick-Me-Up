@@ -1,7 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 const bcrypt  = require("bcrypt");
-const users   = require("../server")
+const users   = require("../server");
 
 const generateRandomString = function() {
   let shortURL = "";
