@@ -5,5 +5,7 @@ module.exports = (db) => {
   router.get("/", (req, res) => {
     res.render('registration');
   });
+
+  
   return router;
 };
