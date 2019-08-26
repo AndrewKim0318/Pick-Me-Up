@@ -39,8 +39,9 @@
 
     <section class="menu-container">
       <div class="menu-item">
+
         <% for(let key in foodItems) { %>
-          <div class = "<%= foodItems[key]['category']%>">
+          <div class = "<%= foodItems[key]['category']%> inside-menu">
             <h3><%= foodItems[key]["name"] %></h3>
             <p><%= foodItems[key]["description"] %></p>
             <span class="item-price"><%= foodItems[key]["price"] %></span>
