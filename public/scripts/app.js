@@ -1,4 +1,7 @@
 $(() => {
+  const $searchContainer = $(".search-container");
+  $searchContainer.hide();
+
   $.ajax({
     method: "GET",
     url: "/api/users"
@@ -8,4 +11,9 @@ $(() => {
     }
   });
 
+  $(".search-icon").click(function(event) {
+    event.preventDefault();
+
+    $searchContainer.animate({width: "toogle"});
+  })
 });
