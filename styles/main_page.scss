@@ -57,7 +57,9 @@ h1 {
 }
 .menu-item-btn {
   text-decoration: none;
-  border: 2px solid #c5cbe3;
+  border-top: none;
+  border-bottom: none;
+  border-right: 2px solid #c5cbe3;
   padding: 20px;
   margin-right: 5px;
   width: 100%;
