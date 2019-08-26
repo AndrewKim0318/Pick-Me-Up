@@ -9,7 +9,7 @@ module.exports = (db) => {
     const id = req.session.userId;
     const templateVars = {
       user: users[id],
-      fooditems: foodItems
+      foodItems: foodItems
     }
     res.render('homepage', templateVars);
   });

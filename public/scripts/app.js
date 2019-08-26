@@ -9,9 +9,21 @@ $(() => {
   const $pieButton = $("#pies");
   const $macaronButton = $("#macarons");
   const $menuItems = $(".menu-item");
+  const $pastry = $(".pastries");
+  const $cookie = $(".cookies");
+  const $cake = $(".cakes");
+  const $pie = $(".pies");
+  const $macaron = $(".macarons");
+
   const url = "/";
 
   $searchContainer.hide();
+  $pastry.show();
+  $cookie.hide();
+  $cake.hide();
+  $pie.hide();
+  $macaron.hide();
+
 
   $searchIcon.click(function(event) {
     event.preventDefault();
@@ -31,43 +43,51 @@ $(() => {
   $pastryButton.click(function(event) {
     event.preventDefault();
 
-    $.ajax({
-      url : "/",
-      type : "GET",
-    })
-    .then(function(data){
-      console.log(data);
-      return data; 
-    });
-    console.log(this);
-    console.log(this.parentElement.children);
-
-    this.parentElement.children.removeClass("active");
-    this.addClass("active");
+    $pastry.show();
+    $cookie.hide();
+    $cake.hide();
+    $pie.hide();
+    $macaron.hide();
 
   });
 
   $cookieButton.click(function(event) {
     event.preventDefault();
 
-    $menuItems.empty();
+    $pastry.hide();
+    $cookie.show();
+    $cake.hide();
+    $pie.hide();
+    $macaron.hide();
   });
 
   $cakeButton.click(function(event) {
     event.preventDefault();
 
-    $menuItems.empty();
+    $pastry.hide();
+    $cookie.hide();
+    $cake.show();
+    $pie.hide();
+    $macaron.hide();
   });
   
   $pieButton.click(function(event) {
     event.preventDefault();
 
-    $menuItems.empty();
+    $pastry.hide();
+    $cookie.hide();
+    $cake.hide();
+    $pie.show();
+    $macaron.hide();
   });
   
   $macaronButton.click(function(event) {
     event.preventDefault();
 
-    $menuItems.empty();
+    $pastry.hide();
+    $cookie.hide();
+    $cake.hide();
+    $pie.hide();
+    $macaron.show();
   });
 });
