@@ -40,7 +40,6 @@ body {
   justify-content: space-between;
   position: relative;
   width: 100%;
-  border: 2px solid pink;
 }
 .number {
   margin: 100px;
@@ -55,9 +54,20 @@ input {
 }
 .menu-item {
   grid-column: 1;
+  border: 4px solid #d79922;
+  border-radius: 20px;
+  margin: 15px;
 }
 
 .checkout-container {
   grid-column: 2;
-  border: 2px solid pink;
+  border: 4px solid #4056A1;
+
+  border-radius: 20px;
+  margin: 15px;
+}
+
+.checkout-btn {
+  border: 4px solid #F13C20 ;
+  border-radius: 20px;
 }
