@@ -1,58 +1,59 @@
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Main Page</title>
-  <link rel="stylesheet" href=https://use.fontawesome.com/releases/v5.10.1/css/all.css>
-  <link rel="stylesheet" href="/styles/main_page.css">
+  <link rel="stylesheet" href=https://use.fontawesome.com/releases/v5.10.1/css/all.css> <link rel="stylesheet"
+    href="/styles/main_page.css">
   <link rel="stylesheet" href="/styles/nav_bar.css">
 </head>
+
 <body>
-    <% include partials/_navbar.ejs %>
-    <header class="header-wrapper">
-        <video class="video" _ngcontent-coverr-redesign-c19 playsinline autoplay muted loop class="header-video" src="https://storage.googleapis.com/coverr-main/mp4%2FHanging%20There.mp4?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=coverr-183014%40appspot.gserviceaccount.com%2F20190824%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20190824T105648Z&X-Goog-Expires=90001&X-Goog-SignedHeaders=host&X-Goog-Signature=03a39b1e98f71ed24f60cda645e23e80b86dab72e2bfd62c7e951154863be8a08129944e6f506a34563adf872a53b423a560ec8ed7576b6e6c18c0fa3d44d5adbd5b77e6036306b577085c7a346ad9074747ce49a60aaf912f380a464f237148da1b1714d16d681be73a25671dfb7be3827b0cf11ef971f04d7605046d477a7b2724ef676730daf262e368dcc404717ad1eb04390c2b66463426aab4d382dfa2bfcdbe7ad8130fd80ced4b2a941a4448561ea6f7f48a553135c73391da2191990da175782e88c46847121e20f9c0a6b062cfcb75071234a5371f15d7f4b494ee3f5d811beffe4802906a76efad56cc3f5de7b890c6b69e87aada5e7c6cb30a48"></video>
-    </header>
+  <% include partials/_navbar.ejs %>
+  <header class="header-wrapper">
+    <video class="video" _ngcontent-coverr-redesign-c19 playsinline autoplay muted loop class="header-video"
+      src="https://storage.googleapis.com/coverr-main/mp4%2FHanging%20There.mp4?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=coverr-183014%40appspot.gserviceaccount.com%2F20190824%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20190824T105648Z&X-Goog-Expires=90001&X-Goog-SignedHeaders=host&X-Goog-Signature=03a39b1e98f71ed24f60cda645e23e80b86dab72e2bfd62c7e951154863be8a08129944e6f506a34563adf872a53b423a560ec8ed7576b6e6c18c0fa3d44d5adbd5b77e6036306b577085c7a346ad9074747ce49a60aaf912f380a464f237148da1b1714d16d681be73a25671dfb7be3827b0cf11ef971f04d7605046d477a7b2724ef676730daf262e368dcc404717ad1eb04390c2b66463426aab4d382dfa2bfcdbe7ad8130fd80ced4b2a941a4448561ea6f7f48a553135c73391da2191990da175782e88c46847121e20f9c0a6b062cfcb75071234a5371f15d7f4b494ee3f5d811beffe4802906a76efad56cc3f5de7b890c6b69e87aada5e7c6cb30a48"></video>
+  </header>
   <div class="content-wrapper">
     <nav class="scroll-menu-nav">
-        <div class="search-toggle">
-            <button class="search-icon"><i class="fas fa-search"></i></button>
-            <button class="search-icon-close"><i class="fas fa-times"></i></button>
-            <div class="search-container">
-              <form action="">
-                <input type="text" placeholder="Search items.."/>
-                <button type="submit" name="submit" class="search-icon"><i class="fas fa-search"></i></button>
-              </form>
-            </div>
-          </div>
+      <div class="search-toggle">
+        <button class="search-icon"><i class="fas fa-search"></i></button>
+        <button class="search-icon-close"><i class="fas fa-times"></i></button>
+        <div class="search-container">
+          <form action="/search" method="POST">
+            <input type="text" placeholder="Search items.." />
+            <button type="submit" name="submit" class="search-icon"><i class="fas fa-search"></i></button>
+          </form>
+        </div>
+      </div>
       <a class="menu-item-btn" href="#menu">Pastries</a>
       <a class="menu-item-btn" href="#menu">Cookies</a>
       <a class="menu-item-btn" href="#menu">Cakes</a>
       <a class="menu-item-btn" href="#menu">Pies</a>
       <a class="menu-item-btn" href="#menu">Macarons</a>
     </nav>
-<section class="menu-container">
-<div class="menu-item">
-<h3>Scones</h3>
-<p>3 freshly baked blueberry scones</p>
-<span class="item-price">$8.50</span>
-<div class="counter">
-  <span class="minus"><i class="far fa-minus-square"></i></span>
-  <input type="text" value="1">
-  <span class="plus"><i class="far fa-plus-square"></i></span>
-</div>
-</div>
-<div class="menu-item">
-    <h3>Scones</h3>
-    <p>3 freshly baked blueberry scones</p>
-    <span class="item-price">$8.50</span>
-    <div class="counter">
-      <span class="minus"><i class="far fa-minus-square"></i></span>
-      <input type="text" value="1">
-      <span class="plus"><i class="far fa-plus-square"></i></span>
-    </div>
-    </div>
-</section>
+    <section class="menu-container">
+        <div class="test">
+            <div class="menu-item">
+              <h3>Scones</h3>
+              <p>3 freshly baked blueberry scones</p>
+              <span class="item-price">$8.50</span>
+              <div class="counter">
+                <span class="minus"><i class="far fa-minus-square"></i></span>
+                <input type="text" value="1">
+                <span class="plus"><i class="far fa-plus-square"></i></span>
+              </div>
+            </div>
+            <section class="checkout-container">
+              <div class="checkout-item">
+                <h4>Scones</h4>
+                <span class="item-price">$8.50</span>
+              </div>
+            </section>
+          </div>
+    </section>
   </div>
 </body>
 </html>

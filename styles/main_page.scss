@@ -34,7 +34,7 @@ body {
   display: block;
   justify-content: space-between;
   position: relative;
-  width: 50%;
+  width: 100%;
   border: 2px solid pink;
 }
 .number {
@@ -42,4 +42,17 @@ body {
 }
 input {
   text-align: center;
+}
+
+.test {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+.menu-item {
+  grid-column: 1;
+}
+
+.checkout-container {
+  grid-column: 2;
+  border: 2px solid pink;
 }
