@@ -42,6 +42,11 @@ h1 {
   display: flex;
 }
 
+.search-icon {
+  border: none;
+  background: transparent;
+}
+
 .search-container {
   display: flex;
   border: 2px solid #c5cbe3;
@@ -82,16 +87,20 @@ h1 {
 .minus {
   color: #4056A1;
   -webkit-text-stroke: .3px;
+  padding: 5px;
 }
 .plus {
   color: #4056A1;
   -webkit-text-stroke: .3px;
+  padding: 5px;
 }
 
 .menu-item-counter {
   text-align: center;
   font-weight: bold;
   width: 25px;
+  border: none;
+  font-size: medium;
 }
 
 .menu-item {

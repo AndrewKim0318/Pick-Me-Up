@@ -1,73 +1,71 @@
 .log-in-container {
-  display: grid;
+  display: flex;
   margin: auto;
   grid-template-columns: repeat(3, 1fr);
   background: white;
-  background-image: url(/docs/christina-branco-7P-wc2Z2Ujs-unsplash.jpg);
-  background-size: cover;
-  opacity: 0.8;
   height: 100vh;
   width: 100%;
   font-family: 'Raleway', sans-serif;
 }
 
 .login-img {
-  display: grid;
-  grid-column-start: 1;
-  grid-column-end: 4;
-  width: 100%;
+position: relative;
+left: 100px;
+top: 100px;
+opacity: 0.8;
+width: 40vw;
+height: 50vh;
 }
 
 .log-in-form {
   z-index: 1;
-  position: sticky;
-  display: grid;
-  grid-column: 2;
-  grid-template-rows: repeat(1, 1fr);
-  height: 250px;
+  display: block;
+  position: relative;
+  left: 160px;
+  top: 100px;
   background-color: transparent;
+  letter-spacing: 4px;
+  font-weight: 300;
 }
 
 .log-in-title {
-  display: grid;
-  grid-row: 1;
+  display: flex;
   text-align: center;
-  color: white;
+  color: grey;
+  font-weight: 300;
+  padding-left: 16px;
+  margin-bottom: 30px;
 }
 
 .log-in-name-container {
-  display: grid;
-  grid-row: 2;
-  grid-template-columns: 100px 1fr;
+  display: flex;
 }
 
 .log-in-password-container {
-  display: grid;
-  grid-row: 3;
+  display: flex;
   grid-template-columns: 100px 1fr;
   border: none;
 }
 
 .log-in-submit-button {
-  grid-row: 4;
   border: none;
   background: transparent;
-  color: white;
+  color: black;
+  margin-left: 120px;
 }
 
 .log-in-label {
-  grid-column: 1;
-  justify-self: end;
+  display: flex;
   align-self: center;
   padding-right: 1em;
-  color: white;
+  color: black;
+  padding: 1em;
 }
 
 .log-in-input {
-  grid-column: 2;
-  height: 60%;
-  align-self: center;
   border: none;
   background: transparent;
   border-bottom: 2px solid #d79922;
+  margin-bottom: 16px;
+  align-items: center;
 }
