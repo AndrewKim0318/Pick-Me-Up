@@ -36,8 +36,8 @@ body {
 }
 
 .menu-container {
-  display: block;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
   position: relative;
   width: 100%;
 }
@@ -48,10 +48,6 @@ input {
   text-align: center;
 }
 
-.test {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-}
 .menu-item {
   display: flex;
   justify-content: space-between;
