@@ -35,6 +35,10 @@ body {
   text-decoration: none;
 }
 
+.menu-item-btn:hover {
+  border-bottom: 2px solid #4056A1;
+}
+
 .menu-container {
   display: grid;
   grid-template-columns: 2fr 1fr;
