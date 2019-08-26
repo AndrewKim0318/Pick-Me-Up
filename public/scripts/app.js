@@ -8,5 +8,4 @@ $(() => {
     }
   });
 
-  // $("#editPhoneNumber").attr("placeholder","hello");
 });
