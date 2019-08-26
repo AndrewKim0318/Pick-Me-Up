@@ -14,6 +14,8 @@ $(() => {
   const $cake = $(".cakes");
   const $pie = $(".pies");
   const $macaron = $(".macarons");
+  const $addButton = $(".plus");
+  const $minusButton = $(".minus");
 
   const url = "/";
 
@@ -90,4 +92,18 @@ $(() => {
     $pie.hide();
     $macaron.show();
   });
+
+  $addButton.click(function(event){
+    event.preventDefault();
+    let $quantityCounter = $(this.parentElement).children("input");
+    $quantityCounter.val(+$quantityCounter.val() + 1);
+  });
+
+  $minusButton.click(function(event){
+    event.preventDefault();
+    let $quantityCounter = $(this.parentElement).children("input");
+    if(Number($quantityCounter.val()) !== 0){
+      $quantityCounter.val(+$quantityCounter.val() - 1);
+    }
+  })
 });
