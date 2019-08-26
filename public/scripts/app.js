@@ -1,3 +1,4 @@
+
 $(() => {
   const $searchContainer = $(".search-container");
   const $searchIcon = $(".search-icon");
@@ -8,6 +9,8 @@ $(() => {
   const $pieButton = $("#pies");
   const $macaronButton = $("#macarons");
   const $menuItems = $(".menu-item");
+  const url = "/";
+
   $searchContainer.hide();
 
   $searchIcon.click(function(event) {
@@ -28,7 +31,20 @@ $(() => {
   $pastryButton.click(function(event) {
     event.preventDefault();
 
-    $menuItems.empty();
+    $.ajax({
+      url : "/",
+      type : "GET",
+    })
+    .then(function(data){
+      console.log(data);
+      return data; 
+    });
+    console.log(this);
+    console.log(this.parentElement.children);
+
+    this.parentElement.children.removeClass("active");
+    this.addClass("active");
+
   });
 
   $cookieButton.click(function(event) {

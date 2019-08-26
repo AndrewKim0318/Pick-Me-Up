@@ -67,7 +67,7 @@ const users = {
   
 };
 
-const food_items = {
+const foodItems = {
   1: {
     name: "scones",
     description: "3 freshly baked blueberry scones",
@@ -100,8 +100,9 @@ const food_items = {
   }
 }
 
+module.exports = users;
+
+
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
-
-module.exports = users;
