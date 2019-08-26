@@ -19,7 +19,7 @@ module.exports = (db) => {
     }
   
     if (users[id]) {
-      res.render('/', templateVars);
+      res.redirect('/');
     } else {
       res.render('login', templateVars);
     }

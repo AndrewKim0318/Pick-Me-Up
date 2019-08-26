@@ -23,14 +23,19 @@ module.exports = (db) => {
     const templateVars = {
       user: users[id]
     }
-    
-    res.render('registration', templateVars);
+
+    if (users[id]) {
+      res.redirect('/');
+    } else {
+      res.render('registration', templateVars);
+    }
   });
 
   router.post("/", (req,res) => {
     const id = generateRandomString();
     const name = req.body.name;
     const username = req.body.username;
+    const phoneNumber = req.body.phoneNumber;
     const password = req.body.password;
     const hashedPassword = bcrypt.hashSync(password, 10);
 
@@ -38,6 +43,7 @@ module.exports = (db) => {
       id: id,
       name: name,
       username: username,
+      phoneNumber: phoneNumber,
       password: hashedPassword
     }
 

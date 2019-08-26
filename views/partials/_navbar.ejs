@@ -3,9 +3,11 @@
   <div class="nav-bar-wrapper">
     <div class="nav-bar-card">
       <div>
-        <a href="#" class="nav-button">Hello <%= user["name"] %></a>
-        <a href="#" class="nav-button">Profile</a>
-        <a href="#" class="nav-button">Log out</a>
+        <form action="/logout" method="POST">
+          <label for="username">Hello <%= user["name"] %></label>
+          <button type="submit">Logout</button>
+        </form>
+        <a href="/profile">Profile</a>
       </div>
       <div class="container-right">
         <a href="#menu" class="nav-button">Menu</a>
@@ -17,8 +19,8 @@
   <div class="nav-bar-wrapper">
     <div class="nav-bar-card">
       <div>
-        <a href="#" class="nav-button">Login</a>
-        <a href="#" class="nav-button">Register</a>
+        <a href="/login" class="nav-button">Login</a>
+        <a href="/registration" class="nav-button">Register</a>
       </div>
       <div class="container-right">
         <a href="#menu" class="nav-button">Menu</a>

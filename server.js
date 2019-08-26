@@ -56,8 +56,9 @@ app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 
 app.use("/login", loginRoutes(db));
+app.use("/logout", logoutRoutes(db));
 app.use("/registration", registrationRoutes(db));
-app.use("/profileRoutes", profileRoutes(db));
+app.use("/profile", profileRoutes(db));
 app.use("/", homepageRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
