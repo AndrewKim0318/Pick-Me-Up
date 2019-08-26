@@ -1,23 +1,58 @@
+const $searchContainer = $(".search-container");
+const $searchIcon = $(".search-icon");
+const $changingIcon = $("#change-icon");
+const $pastryButton = $("#pastries");
+const $cookieButton = $("#cookies");
+const $cakeButton = $("#cakes");
+const $pieButton = $("#pies");
+const $macaronButton = $("#macarons");
+const $pastry = $(".pastries");
+const $cookie = $(".cookies");
+const $cake = $(".cakes");
+const $pie = $(".pies");
+const $macaron = $(".macarons");
+const $addButton = $(".plus");
+const $minusButton = $(".minus");
+const $checkoutItemContainer = $(".checkout-container");
+let includedItems = [];
+
+const insertIntoCheckoutContainer = function(data, id) {
+
+  const name = $(data).children("h3").text();
+  const price = $(data).children(".item-price").text();
+  let counter = $(data).children(".counter").children("input").val();
+  
+  const $item = $(`
+  <div class="checkout-item">
+  <h4>${name}</h4>
+  <span id="${id}" class="item-count">
+    x ${counter}
+  </span>
+  <div class="plus-minus-btns">
+    <i class="far fa-minus-square"></i>
+    <i class="far fa-plus-square"></i>
+  </div>
+  <span class="item-price">$${price}</span>
+  </div>`);
+
+  $checkoutItemContainer.prepend($item);
+  return $checkoutItemContainer;
+
+};
+
+const increaseCounterInCheckoutContainer = function(data, id) {
+  
+  const $value = $(data).children(".counter").children("input");
+  let $container = $checkoutItemContainer.children(".checkout-item").children(`#${id}`);
+  let $newValue = $value.val(+$value.val()+1);
+  let $counter = $(data).children(".counter").children("input").val();
+  $container.text(`x ${$counter}`);
+  return $newValue;
+  
+};
+
 
 $(() => {
-  const $searchContainer = $(".search-container");
-  const $searchIcon = $(".search-icon");
-  const $changingIcon = $("#change-icon");
-  const $pastryButton = $("#pastries");
-  const $cookieButton = $("#cookies");
-  const $cakeButton = $("#cakes");
-  const $pieButton = $("#pies");
-  const $macaronButton = $("#macarons");
-  const $menuItems = $(".menu-item");
-  const $pastry = $(".pastries");
-  const $cookie = $(".cookies");
-  const $cake = $(".cakes");
-  const $pie = $(".pies");
-  const $macaron = $(".macarons");
-  const $addButton = $(".plus");
-  const $minusButton = $(".minus");
-
-  const url = "/";
 
   $searchContainer.hide();
   $pastry.show();
@@ -95,13 +130,32 @@ $(() => {
 
   $addButton.click(function(event){
     event.preventDefault();
+
+    const parent = this.parentElement;
+    const grandparent = parent.parentElement;
+    const nameToCheck = $(grandparent).children("h3").text();
     let $quantityCounter = $(this.parentElement).children("input");
-    $quantityCounter.val(+$quantityCounter.val() + 1);
+    let name = $checkoutItemContainer.children(".checkout-item").children("h4").text();
+    const id = nameToCheck;
+
+    if (!includedItems.includes(nameToCheck)) {
+      $quantityCounter.val(+$quantityCounter.val() + 1);
+      includedItems.push(nameToCheck);
+      insertIntoCheckoutContainer(grandparent, id);
+      id++;
+    } else {
+      increaseCounterInCheckoutContainer(grandparent, id);
+    }
+    
   });
 
   $minusButton.click(function(event){
     event.preventDefault();
+
+    const parent = this.parentElement;
+    const grandparent = parent.parentElement;
     let $quantityCounter = $(this.parentElement).children("input");
+
     if(Number($quantityCounter.val()) !== 0){
       $quantityCounter.val(+$quantityCounter.val() - 1);
     }
