@@ -2,9 +2,10 @@ body {
   background-color: #EEE;
   height: 100%;
   margin: 0;
+  margin-top: 72px;
   padding: 0;
 }
-.video {
+.header-image {
   position: relative;
 }
 .content-wrapper {
@@ -25,9 +26,6 @@ body {
 
 .search-toggle {
   display: flex;
-  text-decoration: none;
-  border: 2px solid #c5cbe3;
-  background: none;
 }
 
 .search-container {
