@@ -20,16 +20,16 @@
       <a href="#" type="submit" class="profile-btn">Edit Profile</a>
       <a href="#" type="submit" class="profile-btn">Order History</a>
     </div>
-       
+
     <section class="edit-profile-container">
       <form action="/profile/edit" method="POST" class="edit-form">
         <div class="edit-phone-container">
           <label for="phoneNumber" class="edit-label">Phone Number:</label>
-          <input type="text" class="edit-input" name="phoneNumber">
+          <input id="editPhoneNumber" type="text" class="edit-input" name="phoneNumber" placeholder="<%= user["phoneNumber"] %>">
         </div>
         <div class="edit-password-container">
           <label for="password" class="edit-label">Password:</label>
-          <input type="text" class="edit-input" name="password">
+          <input id="editPassword" type="text" class="edit-input" name="password" placeholder="<%= user["password"] %>">
         </div>
         <button type="submit" class="edit-button">Save</button>
       </form>
@@ -44,6 +44,9 @@
       <section class="order-history-container"></section>
     </section>
   </main>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script src="../public/scripts/app.js"></script>
 </body>
 
 </html>

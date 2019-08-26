@@ -7,4 +7,6 @@ $(() => {
       $("<div>").text(user.name).appendTo($("body"));
     }
   });
+
+  // $("#editPhoneNumber").attr("placeholder","hello");
 });

@@ -10,7 +10,11 @@ module.exports = (db) => {
       user: users[id]
     }
     
-    res.render('profile', templateVars);
+    if(users[id]){
+      res.render('profile', templateVars);
+    } else {
+      res.redirect("/");
+    }
   });
 
   router.post("/edit", (req,res) => {
