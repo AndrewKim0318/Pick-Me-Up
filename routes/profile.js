@@ -3,7 +3,12 @@ const router  = express.Router();
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    res.render('profile');
+    const id = req.session.userId;
+    const templateVars = {
+      user: users[id]
+    }
+    
+    res.render('profile', templateVars);
   });
   return router;
 };

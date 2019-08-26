@@ -13,7 +13,16 @@ const getIdByUsername = function(database, username) {
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    res.render('login');
+    const id = req.session.userId;
+    const templateVars = {
+      user: users[id]
+    }
+  
+    if (users[id]) {
+      res.render('/', templateVars);
+    } else {
+      res.render('login', templateVars);
+    }
   });
 
   router.post("/", (req,res) => {

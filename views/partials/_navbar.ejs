@@ -1,12 +1,29 @@
-<div class="nav-bar-wrapper">
-  <div class="nav-bar-card">
-    <div>
-      <a href="#" class="nav-button">Login</a>
-      <a href="#" class="nav-button">Register</a>
-    </div>
-    <div class="container-right">
-      <a href="#menu" class="nav-button">Menu</a>
-      <a href="#contact" class="nav-button">Contact</a>
+
+<% if (user){ %>
+  <div class="nav-bar-wrapper">
+    <div class="nav-bar-card">
+      <div>
+        <a href="#" class="nav-button">Hello <%= user["name"] %></a>
+        <a href="#" class="nav-button">Profile</a>
+        <a href="#" class="nav-button">Log out</a>
+      </div>
+      <div class="container-right">
+        <a href="#menu" class="nav-button">Menu</a>
+        <a href="#contact" class="nav-button">Contact</a>
+      </div>
     </div>
   </div>
-</div>
+<% } else {%>
+  <div class="nav-bar-wrapper">
+    <div class="nav-bar-card">
+      <div>
+        <a href="#" class="nav-button">Login</a>
+        <a href="#" class="nav-button">Register</a>
+      </div>
+      <div class="container-right">
+        <a href="#menu" class="nav-button">Menu</a>
+        <a href="#contact" class="nav-button">Contact</a>
+      </div>
+    </div>
+  </div>
+<% } %>

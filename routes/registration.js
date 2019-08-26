@@ -19,7 +19,12 @@ const generateRandomString = function() {
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    res.render('registration');
+    const id = req.session.userId;
+    const templateVars = {
+      user: users[id]
+    }
+    
+    res.render('registration', templateVars);
   });
 
   router.post("/", (req,res) => {

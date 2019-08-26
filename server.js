@@ -45,6 +45,7 @@ const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 
 const loginRoutes = require("./routes/login");
+const logoutRoutes = require("./routes/logout");
 const registrationRoutes = require("./routes/registration");
 const profileRoutes = require("./routes/profile");
 const homepageRoutes = require("./routes/homepage")
@@ -62,11 +63,11 @@ app.use("/", homepageRoutes(db));
 
 //Create hardcoded db to test registration and login
 const users = {
-
+  
 };
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
 
-module.exports = { users, bcrypt };
+module.exports = users;
