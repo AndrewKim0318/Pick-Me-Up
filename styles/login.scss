@@ -1,12 +1,19 @@
 .log-in-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  background: white;
+}
+
+.login-img {
+  position: relative;
+  width: 100%;
+  opacity: 0.7;
 }
 
 .log-in-form {
   grid-column: 2;
   display: grid;
-  grid-template-rows: repeat(4, 1fr); 
+  grid-template-rows: repeat(4, 1fr);
 }
 
 .log-in-title {
