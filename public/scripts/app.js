@@ -1,6 +1,7 @@
 $(() => {
   const $searchContainer = $(".search-container");
-  const $searchIcon = $("#search-icon");
+  const $searchIcon = $(".search-icon");
+  const $changingIcon = $("#change-icon");
   const $pastryButton = $("#pastries");
   const $cookieButton = $("#cookies");
   const $cakeButton = $("#cakes");
@@ -13,13 +14,14 @@ $(() => {
     event.preventDefault();
 
     $searchContainer.animate({width: "toggle"});
+    console.log($searchIcon[0].className);
 
-    if($searchIcon[0].className === "fas fa-search"){
-      $searchIcon.removeClass("fa-search");
-      $searchIcon.addClass("fa-times");
+    if($changingIcon[0].className === "fas fa-search"){
+      $changingIcon.removeClass("fa-search");
+      $changingIcon.addClass("fa-times");
     } else {
-      $searchIcon.addClass("fa-search");
-      $searchIcon.removeClass("fa-times");
+      $changingIcon.addClass("fa-search");
+      $changingIcon.removeClass("fa-times");
     }
   });
 
