@@ -140,11 +140,12 @@ $(() => {
     const grandparent = parent.parentElement;
     const nameToCheck = $(grandparent).children("h3").text();
     let $quantityCounter = $(this.parentElement).children("input");
-    const id = nameToCheck;
+    const id = nameToCheck.replace(/\s+/g, '');
+    console.log(id);
 
-    if (!includedItems.includes(nameToCheck)) {
+    if (!includedItems.includes(id)) {
       $quantityCounter.val(+$quantityCounter.val() + 1);
-      includedItems.push(nameToCheck);
+      includedItems.push(id);
       insertIntoCheckoutContainer(grandparent, id);
     } else {
       $quantityCounter.val(+$quantityCounter.val() + 1);
@@ -160,7 +161,8 @@ $(() => {
     const grandparent = parent.parentElement;
     const nameToCheck = $(grandparent).children("h3").text();
     let $quantityCounter = $(this.parentElement).children("input");
-    const id = nameToCheck;
+    const id = nameToCheck.replace(/\s+/g, '');
+    console.log(id);
 
     if(Number($quantityCounter.val()) > 1) {
       $quantityCounter.val(+$quantityCounter.val() - 1);
