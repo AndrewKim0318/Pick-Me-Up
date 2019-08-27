@@ -26,11 +26,11 @@ const insertIntoCheckoutContainer = function(data, id) {
   <div class="checkout-item">
   <h4>${name}</h4>
   <span id="${id}" class="item-count">
-    x ${counter}
+    x<input class="menu-item-counter" type="text" value="${counter}" readonly>
   </span>
   <div class="plus-minus-btns">
-    <i class="far fa-minus-square"></i>
-    <i class="far fa-plus-square"></i>
+    <i class="far fa-minus-square minus-btn-icon"></i>
+    <i class="far fa-plus-square plus-btn-icon"></i>
   </div>
   <span class="item-price">$${price}</span>
   </div>`);
@@ -41,17 +41,15 @@ const insertIntoCheckoutContainer = function(data, id) {
 };
 
 const changeCounterInCheckoutContainer = function(data, id) {
-  const $value = $checkoutItemContainer.children(".checkout-item").children(`#${id}`);
+  const $value = $checkoutItemContainer.children(".checkout-item").children(`#${id}`).children(".menu-item-counter");
   const $counter = $(data).children(".counter").children("input").val();
-  $value.text(`x ${$counter}`);
+  $value.val(`${$counter}`);
 
 };
 
 const removeItemFromCheckoutContainer = function(id) {
   const $counter = $checkoutItemContainer.children(".checkout-item").children(`#${id}`);
-  console.log($counter);
   const $parent = $counter.parent();
-  console.log($parent);
   $parent.remove();
   
 }
@@ -139,7 +137,7 @@ $(() => {
     const parent = this.parentElement;
     const grandparent = parent.parentElement;
     const nameToCheck = $(grandparent).children("h3").text();
-    let $quantityCounter = $(this.parentElement).children("input");
+    let $quantityCounter = $(parent).children(".menu-item-counter");
     const id = nameToCheck.replace(/\s+/g, '');
 
     if (!includedItems.includes(id)) {
@@ -159,9 +157,8 @@ $(() => {
     const parent = this.parentElement;
     const grandparent = parent.parentElement;
     const nameToCheck = $(grandparent).children("h3").text();
-    let $quantityCounter = $(this.parentElement).children("input");
+    let $quantityCounter = $(parent).children(".menu-item-counter");
     const id = nameToCheck.replace(/\s+/g, '');
-    console.log(id);
 
     if(Number($quantityCounter.val()) > 1) {
       $quantityCounter.val(+$quantityCounter.val() - 1);
@@ -173,5 +170,28 @@ $(() => {
       removeItemFromCheckoutContainer(id);
     }
     
+  })
+
+  $(document).click(function(e) {
+    let $target = $(e.target);
+    if ($target.is(".plus-btn-icon")){
+      let $parent = $target.parent();
+      let $grandParent = $parent.parent();
+      let $quantityCounterContainer = $grandParent.children(".item-count");
+      let $quantityCounter = $quantityCounterContainer.children(".menu-item-counter");
+      $quantityCounter.val(+$quantityCounter.val() + 1);
+      
+    }
+    if ($target.is(".minus-btn-icon")){
+      let $parent = $target.parent();
+      let $grandParent = $parent.parent();
+      let $quantityCounterContainer = $grandParent.children(".item-count");
+      let $quantityCounter = $quantityCounterContainer.children(".menu-item-counter");
+      console.log($quantityCounter.val());
+      if ($quantityCounter.val() > 0){
+        $quantityCounter.val(+$quantityCounter.val() - 1);
+      }
+      
+    }
   })
 });
