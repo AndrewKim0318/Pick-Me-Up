@@ -7,5 +7,5 @@ CREATE TABLE food_items (
   cost SMALLINT NOT NULL,
   description TEXT,
   photo_url VARCHAR(255) NOT NULL,
-  availability BOOLEAN DEFAULT TRUE
+  stock SMALLINT DEFAULT 0
   );
