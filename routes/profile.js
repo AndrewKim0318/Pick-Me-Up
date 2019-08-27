@@ -6,27 +6,45 @@ const bcrypt  = require("bcrypt");
 module.exports = (db) => {
   router.get("/", (req, res) => {
     const id = req.session.userId;
+    const queryString = `
+    SELECT *
+    FROM users
+    WHERE id = $1
+    `;
+    const queryParams = [id]
+
+    db.query(queryString, queryParams)
+    .then(res => res.rows)
+    .then(user => {
+      if(user.length){
     const templateVars = {
-      user: users[id]
+      user: user
     }
-    
-    if(users[id]){
-      res.render('profile', templateVars);
-    } else {
-      res.redirect("/");
-    }
-  });
+    res.render('profile', templateVars);
+  } else {
+    res.redirect("/");
+  }
+  })
+});
 
   router.post("/edit", (req,res) => {
     const id = req.session.userId;
-
     const phoneNumber = req.body.phoneNumber;
     const password = req.body.password;
     const hashedPassword = bcrypt.hashSync(password, 10);
 
-    users[id]["phoneNumber"] = phoneNumber;
-    users[id]["password"] = hashedPassword;
+    const queryString = `
+    UPDATE users
+    SET phone_number = $1, password = $2
+    WHERE id = $3 RETURNING *;
+    `;
 
+    const queryParams = [phoneNumber, hashedPassword, id];
+
+    db.query(queryString, queryParams)
+    .then(res => {
+      console.log(res.rows);
+    })
     res.redirect("/profile");
   });
   return router;

@@ -6,7 +6,7 @@ const { users, foodItems }  = require("./constants");
 module.exports = (db) => {
   router.get("/", (req, res) => {
     const id = req.session.userId;
-    
+
     queryString = `
       SELECT *
       FROM users
@@ -27,7 +27,7 @@ module.exports = (db) => {
         user: user,
         foodItems: foodItems
       }
-      res.render('homepage', templateVars); 
+      res.render('homepage', templateVars);
     });
   });
   return router;

@@ -12,9 +12,9 @@
 </head>
 
 <body>
-  
+
   <% include partials/_navbar.ejs %>
-  
+
   <main class="profile-container">
     <div class="profile-navbar">
       <a href="#" type="submit" class="profile-btn">Edit Profile</a>
@@ -25,16 +25,16 @@
       <form action="/profile/edit" method="POST" class="edit-form">
         <div class="edit-phone-container">
           <label for="phoneNumber" class="edit-label">Phone Number:</label>
-          <input id="editPhoneNumber" type="text" class="edit-input" name="phoneNumber" placeholder="<%= user["phoneNumber"] %>">
+          <input id="editPhoneNumber" type="text" class="edit-input" name="phoneNumber" placeholder="<%= user[0]["phone_number"] %>">
         </div>
         <div class="edit-password-container">
           <label for="password" class="edit-label">Password:</label>
-          <input id="editPassword" type="text" class="edit-input" name="password" placeholder="<%= user["password"] %>">
+          <input id="editPassword" type="text" class="edit-input" name="password" placeholder="<%= user[0]["password"] %>">
         </div>
         <button type="submit" class="edit-button">Save</button>
       </form>
     </section>
-  
+
     <section class="order-history">
       <header class="order-header">
         <label for="date" class="order-date">Date</label>

@@ -7,49 +7,72 @@ const generateRandomString = function() {
   let shortURL = "";
   const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
   let length = 6;
-  
+
   for (let i = 0; i < length; i++) {
     let random = Math.random(chars.length);
     let index = Math.floor(random * chars.length);
     shortURL += chars[index];
   }
-  
+
   return shortURL;
 };
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
     const id = req.session.userId;
-    const templateVars = {
-      user: users[id]
-    }
 
-    if (users[id]) {
+const queryString = `
+  SELECT *
+  FROM users
+  WHERE id = $1;
+  `;
+
+const queryParams = [id]
+
+  db.query(queryString, queryParams)
+  .then(res => res.rows)
+  .then(user => {
+    if (user.length) {
       res.redirect('/');
     } else {
+      const templateVars = {
+        user: user[0]
+    }
       res.render('registration', templateVars);
     }
+  })
   });
 
   router.post("/", (req,res) => {
-    const id = generateRandomString();
+    // let id = 99;
     const name = req.body.name;
     const username = req.body.username;
     const phoneNumber = req.body.phoneNumber;
     const password = req.body.password;
     const hashedPassword = bcrypt.hashSync(password, 10);
 
-    users[id] = {
-      id: id,
-      name: name,
-      username: username,
-      phoneNumber: phoneNumber,
-      password: hashedPassword
-    }
+    const queryString = `INSERT INTO users(name, username, phone_number, password, store_id)
+    VALUES ($1, $2, $3, $4, 1) RETURNING *`
 
-    req.session.userId = id;
+    const queryParams = [name, username, phoneNumber, hashedPassword];
+    db.query(queryString, queryParams)
+    .then(res => res.rows)
+    .then(user => {
+      req.session.userId = user[0]["id"];
+      res.redirect("/");
+    })
 
-    res.redirect("/");
+    // users[id] = {
+    //   id: id,
+    //   name: name,
+    //   username: username,
+    //   phoneNumber: phoneNumber,
+    //   password: hashedPassword
+    // }
+
+    // req.session.userId = id;
+
+    // res.redirect("/");
   });
   return router;
 };
