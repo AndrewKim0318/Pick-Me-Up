@@ -18,7 +18,7 @@ module.exports = (db) => {
     .then(user => {
       if(user.length){
     const templateVars = {
-      user: user
+      data: user
     }
     res.render('profile', templateVars);
   } else {
