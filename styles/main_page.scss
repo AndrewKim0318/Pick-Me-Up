@@ -76,12 +76,15 @@ h1 {
 .menu-item-btn:hover {
   border-bottom: 2px solid #4056A1;
 }
-
 .menu-container {
   display: grid;
   grid-template-columns: 2fr 1fr;
   position: relative;
   width: 100%;
+}
+
+.counter {
+  margin-left: 6em;
 }
 
 .minus {
@@ -104,7 +107,6 @@ h1 {
 }
 
 .menu-item {
-  display: flex;
   align-items: center;
   grid-column: 1;
   border: 2px solid #d79922;
@@ -116,13 +118,17 @@ h1 {
 
 .inside-menu {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   width: 100%;
+  border-bottom: 2px solid #c5cbe3;
 }
-
+h3 {
+  min-width: 150px;
+}
 p {
   font-style: italic;
+  min-width: 300px;
+  word-wrap: normal;
 }
 
 .checkout-container {
@@ -140,7 +146,7 @@ p {
   justify-content: space-between;
   align-items: flex-end;
   margin: 25px;
-  border-bottom: 3px solid #c5cbe3;
+  border-bottom: 2px solid #c5cbe3;
 }
 h4 {
  padding-left: 10px;
