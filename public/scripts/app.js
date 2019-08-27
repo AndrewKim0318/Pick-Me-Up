@@ -40,16 +40,21 @@ const insertIntoCheckoutContainer = function(data, id) {
 
 };
 
-const increaseCounterInCheckoutContainer = function(data, id) {
-  
-  const $value = $(data).children(".counter").children("input");
-  let $container = $checkoutItemContainer.children(".checkout-item").children(`#${id}`);
-  let $newValue = $value.val(+$value.val()+1);
-  let $counter = $(data).children(".counter").children("input").val();
-  $container.text(`x ${$counter}`);
-  return $newValue;
-  
+const changeCounterInCheckoutContainer = function(data, id) {
+  const $value = $checkoutItemContainer.children(".checkout-item").children(`#${id}`);
+  const $counter = $(data).children(".counter").children("input").val();
+  $value.text(`x ${$counter}`);
+
 };
+
+const removeItemFromCheckoutContainer = function(id) {
+  const $counter = $checkoutItemContainer.children(".checkout-item").children(`#${id}`);
+  console.log($counter);
+  const $parent = $counter.parent();
+  console.log($parent);
+  $parent.remove();
+  
+}
 
 
 $(() => {
@@ -135,16 +140,15 @@ $(() => {
     const grandparent = parent.parentElement;
     const nameToCheck = $(grandparent).children("h3").text();
     let $quantityCounter = $(this.parentElement).children("input");
-    let name = $checkoutItemContainer.children(".checkout-item").children("h4").text();
     const id = nameToCheck;
 
     if (!includedItems.includes(nameToCheck)) {
       $quantityCounter.val(+$quantityCounter.val() + 1);
       includedItems.push(nameToCheck);
       insertIntoCheckoutContainer(grandparent, id);
-      id++;
     } else {
-      increaseCounterInCheckoutContainer(grandparent, id);
+      $quantityCounter.val(+$quantityCounter.val() + 1);
+      changeCounterInCheckoutContainer(grandparent, id);
     }
     
   });
@@ -154,10 +158,19 @@ $(() => {
 
     const parent = this.parentElement;
     const grandparent = parent.parentElement;
+    const nameToCheck = $(grandparent).children("h3").text();
     let $quantityCounter = $(this.parentElement).children("input");
+    const id = nameToCheck;
 
-    if(Number($quantityCounter.val()) !== 0){
+    if(Number($quantityCounter.val()) > 1) {
       $quantityCounter.val(+$quantityCounter.val() - 1);
+      changeCounterInCheckoutContainer(grandparent, id);
+    } else if (Number($quantityCounter.val()) === 1) {
+      $quantityCounter.val(+$quantityCounter.val() - 1);
+      let newArray = includedItems.filter(item => item !== id);
+      includedItems = newArray;
+      removeItemFromCheckoutContainer(id);
     }
+    
   })
 });
