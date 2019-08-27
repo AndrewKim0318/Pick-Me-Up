@@ -41,13 +41,14 @@
       <table class="menu-item">
 
         <% for(let element of data) { %>
+
           <tr class = "<%= element['category']%> inside-menu">
             <td class="item-name"><%= element["item_name"] %></td>
             <td class="item-desc"><%= element["item_description"] %></td>
             <td class="item-price"><%= element["cost"] %></td>
             <td class="counter">
-              <span class="minus"><i class="far fa-minus-square test"></i></span>
-              <input %>" class="menu-item-counter" type="text" value="0">
+              <span class="minus"><i class="far fa-minus-square"></i></span>
+              <input %>" class="menu-item-counter" type="text" value="0" readonly>
               <span class="plus"><i class="far fa-plus-square"></i></span>
             </td>
           </tr>
