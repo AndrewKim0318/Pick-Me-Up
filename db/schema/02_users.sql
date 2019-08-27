@@ -8,4 +8,4 @@ CREATE TABLE users (
   phone_number VARCHAR(255) NOT NULL,
   store_id INTEGER REFERENCES stores(id) ON DELETE CASCADE,
   order_count SMALLINT DEFAULT 0
-  )
+  );
