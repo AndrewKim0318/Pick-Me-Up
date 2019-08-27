@@ -4,7 +4,7 @@ CREATE TABLE food_items (
   id SERIAL PRIMARY KEY NOT NULL,
   item_name VARCHAR(255) NOT NULL,
   category VARCHAR(255) NOT NULL,
-  cost SMALLINT NOT NULL,
+  cost DECIMAL(6,2) NOT NULL,
   item_description TEXT,
   photo_url VARCHAR(255) NOT NULL,
   store_id INTEGER REFERENCES stores(id) ON DELETE CASCADE DEFAULT 1,

@@ -1,6 +1,5 @@
 const express = require('express');
 const router  = express.Router();
-const users   = require("../server");
 const bcrypt  = require("bcrypt");
 
 module.exports = (db) => {

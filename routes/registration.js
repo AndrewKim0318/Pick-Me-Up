@@ -1,21 +1,6 @@
 const express = require('express');
 const router  = express.Router();
 const bcrypt = require("bcrypt");
-const users  = require("../server");
-
-const generateRandomString = function() {
-  let shortURL = "";
-  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  let length = 6;
-
-  for (let i = 0; i < length; i++) {
-    let random = Math.random(chars.length);
-    let index = Math.floor(random * chars.length);
-    shortURL += chars[index];
-  }
-
-  return shortURL;
-};
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
@@ -44,7 +29,7 @@ const queryParams = [id]
   });
 
   router.post("/", (req,res) => {
-    // let id = 99;
+
     const name = req.body.name;
     const username = req.body.username;
     const phoneNumber = req.body.phoneNumber;
@@ -57,10 +42,10 @@ const queryParams = [id]
     `
 
     const queryParams = [name, username, phoneNumber, hashedPassword];
+    
     db.query(queryString, queryParams)
     .then(res => res.rows)
     .then(user => {
-      console.log(user);
       req.session.userId = user[0]["id"];
       res.redirect("/");
     })
