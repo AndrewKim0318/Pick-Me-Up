@@ -18,7 +18,7 @@ let includedItems = [];
 
 const insertIntoCheckoutContainer = function(data, id) {
 
-  const name = $(data).children("h3").text();
+  const name = $(data).children(".item-name").text();
   const price = $(data).children(".item-price").text();
   let counter = $(data).children(".counter").children("input").val();
   
@@ -136,7 +136,7 @@ $(() => {
 
     const parent = this.parentElement;
     const grandparent = parent.parentElement;
-    const nameToCheck = $(grandparent).children("h3").text();
+    const nameToCheck = $(grandparent).children(".item-name").text();
     let $quantityCounter = $(parent).children(".menu-item-counter");
     const id = nameToCheck.replace(/\s+/g, '');
 
@@ -156,7 +156,7 @@ $(() => {
 
     const parent = this.parentElement;
     const grandparent = parent.parentElement;
-    const nameToCheck = $(grandparent).children("h3").text();
+    const nameToCheck = $(grandparent).children(".item-name").text();
     let $quantityCounter = $(parent).children(".menu-item-counter");
     const id = nameToCheck.replace(/\s+/g, '');
 
