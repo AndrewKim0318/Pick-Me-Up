@@ -177,20 +177,58 @@ $(() => {
     if ($target.is(".plus-btn-icon")){
       let $parent = $target.parent();
       let $grandParent = $parent.parent();
+      let $menuItem = $grandParent.parent().parent().children(".menu-item");
+      let $table = $menuItem.children("tbody");
+      let $foodItems = $table.children();
+      let $nameContainer = $foodItems.children(".item-name");
+      let nameOfItem = $grandParent.children("h4").text();
       let $quantityCounterContainer = $grandParent.children(".item-count");
       let $quantityCounter = $quantityCounterContainer.children(".menu-item-counter");
+
       $quantityCounter.val(+$quantityCounter.val() + 1);
+
+      $nameContainer.each(e => {
+        if($($nameContainer[e]).text() === nameOfItem){
+          let foundName = $nameContainer[e];
+          let $foundParent = $(foundName).parent();
+          let $foundCounter = $foundParent.children(".counter");
+          let $foundInput = $foundCounter.children(".menu-item-counter");
+          $foundInput.val($quantityCounter.val())
+        }
+      });
       
     }
     if ($target.is(".minus-btn-icon")){
       let $parent = $target.parent();
       let $grandParent = $parent.parent();
+      let $greatGrandParent = $grandParent.parent()
+      let $menuItem = $grandParent.parent().parent().children(".menu-item");
+      let $table = $menuItem.children("tbody");
+      let $foodItems = $table.children();
+      let $nameContainer = $foodItems.children(".item-name");
+      let nameOfItem = $grandParent.children("h4").text();
       let $quantityCounterContainer = $grandParent.children(".item-count");
       let $quantityCounter = $quantityCounterContainer.children(".menu-item-counter");
-      console.log($quantityCounter.val());
-      if ($quantityCounter.val() > 0){
+      let id = nameOfItem.replace(/\s+/g, '');
+
+      if ($quantityCounter.val() > 1){
         $quantityCounter.val(+$quantityCounter.val() - 1);
+      } else if (Number($quantityCounter.val()) === 1) {
+        console.log("clicked");
+        $quantityCounter.val(+$quantityCounter.val() - 1);
+        let newArray = includedItems.filter(item => item !== id);
+        includedItems = newArray;
+        $grandParent.remove();
       }
+      $nameContainer.each(e => {
+        if($($nameContainer[e]).text() === nameOfItem){
+          let foundName = $nameContainer[e];
+          let $foundParent = $(foundName).parent();
+          let $foundCounter = $foundParent.children(".counter");
+          let $foundInput = $foundCounter.children(".menu-item-counter");
+          $foundInput.val($quantityCounter.val())
+        }
+      });
       
     }
   })
