@@ -131,6 +131,7 @@ h1 {
 .item-name {
   width: 25%;
   white-space: nowrap;
+  letter-spacing: 1px;
 }
 .item-desc {
   font-style: italic;
@@ -141,6 +142,7 @@ h1 {
 .item-price {
   width: 10%;
   padding-left: 30px;
+  letter-spacing: 1px;
 }
 
 .checkout-container {
@@ -160,10 +162,12 @@ h1 {
   margin: 25px;
   border-bottom: 2px solid #c5cbe3;
 }
+
 h4 {
  padding-left: 10px;
  margin: 0px;
 }
+
 .chk-out-total {
 text-align: center;
 }
