@@ -141,7 +141,6 @@ $(() => {
     const nameToCheck = $(grandparent).children("h3").text();
     let $quantityCounter = $(this.parentElement).children("input");
     const id = nameToCheck.replace(/\s+/g, '');
-    console.log(id);
 
     if (!includedItems.includes(id)) {
       $quantityCounter.val(+$quantityCounter.val() + 1);

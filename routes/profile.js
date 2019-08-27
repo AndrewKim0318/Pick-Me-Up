@@ -1,6 +1,5 @@
 const express = require('express');
 const router  = express.Router();
-const users   = require("../server");
 const bcrypt  = require("bcrypt");
 
 module.exports = (db) => {
@@ -17,9 +16,9 @@ module.exports = (db) => {
     .then(res => res.rows)
     .then(user => {
       if(user.length){
-    const templateVars = {
-      user: user
-    }
+      const templateVars = {
+        user: user
+      }
     res.render('profile', templateVars);
   } else {
     res.redirect("/");
