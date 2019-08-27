@@ -38,21 +38,21 @@
     </nav>
 
     <section class="menu-container">
-      <div class="menu-item">
+      <table class="menu-item">
 
         <% for(let element of data) { %>
-          <div class = "<%= element['category']%> inside-menu">
-            <h3><%= element["item_name"] %></h3>
-            <p><%= element["item_description"] %></p>
-            <span class="item-price"><%= element["cost"] %></span>
-            <div class="counter">
+          <tr class = "<%= element['category']%> inside-menu">
+            <td class="item-name"><%= element["item_name"] %></td>
+            <td class="item-desc"><%= element["item_description"] %></td>
+            <td class="item-price"><%= element["cost"] %></td>
+            <td class="counter">
               <span class="minus"><i class="far fa-minus-square test"></i></span>
               <input %>" class="menu-item-counter" type="text" value="0">
               <span class="plus"><i class="far fa-plus-square"></i></span>
-            </div>
-          </div>
+            </td>
+          </tr>
         <%}%>
-      </div>
+      </table>
       <section class="checkout-container">
         <div class="chk-out-total">Total:</div>
         <div class="checkout-btn">CHECKOUT</div>

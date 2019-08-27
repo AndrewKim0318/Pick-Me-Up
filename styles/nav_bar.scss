@@ -35,7 +35,10 @@ label {
   border: none;
   letter-spacing: 4px;
   font-size: 16px;
+}
 
+.logout-btn:hover {
+  cursor: pointer;
 }
 .nav-test {
   display: flex;
