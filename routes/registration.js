@@ -36,7 +36,7 @@ const queryParams = [id]
       res.redirect('/');
     } else {
       const templateVars = {
-        user: user[0]
+        data: user
     }
       res.render('registration', templateVars);
     }
@@ -60,6 +60,7 @@ const queryParams = [id]
     db.query(queryString, queryParams)
     .then(res => res.rows)
     .then(user => {
+      console.log(user);
       req.session.userId = user[0]["id"];
       res.redirect("/");
     })

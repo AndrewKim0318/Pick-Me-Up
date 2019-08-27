@@ -17,10 +17,11 @@ module.exports = (db) => {
         JOIN food_items ON stores.id = food_items.store_id
         WHERE users.id = $1
       `;
-  
+
       queryParams = [id];
       db.query(queryString, queryParams)
       .then(res => {
+        console.log(res.rows);
         if(res.rows.length > 0){
           return res.rows;
         }
@@ -38,7 +39,7 @@ module.exports = (db) => {
         SELECT food_items.category, food_items.cost, food_items.item_description, food_items.item_name
         FROM food_items
       `;
-  
+
       queryParams = [];
       db.query(queryString, queryParams)
       .then(res => {

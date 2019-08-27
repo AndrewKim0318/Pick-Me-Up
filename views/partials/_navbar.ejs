@@ -1,5 +1,6 @@
 
-<% if (data[0]["name"]){ %>
+<% if (data.length){ %>
+  <% if (data[0]["name"]) { %>
   <div class="nav-bar-wrapper">
     <div class="nav-bar-card">
       <div class="nav-test">
@@ -15,6 +16,20 @@
       </div>
     </div>
   </div>
+  <% } else { %>
+    <div class="nav-bar-wrapper">
+      <div class="nav-bar-card">
+        <div>
+          <a href="/login" class="nav-button">Login</a>
+          <a href="/registration" class="nav-button">Register</a>
+        </div>
+        <div class="container-right">
+          <a href="/" class="nav-button">Menu</a>
+          <a href="/" class="nav-button">Contact</a>
+        </div>
+      </div>
+    </div>
+  <% } %>
 <% } else {%>
   <div class="nav-bar-wrapper">
     <div class="nav-bar-card">

@@ -6,7 +6,7 @@ const users   = require("../server");
 module.exports = (db) => {
   router.get("/", (req, res) => {
     const id = req.session.userId;
-  
+
     const queryString = `
       SELECT *
       FROM users
@@ -16,18 +16,13 @@ module.exports = (db) => {
     const queryParams = [id];
 
     db.query(queryString, queryParams)
-    .then(res => {
-      if(res.rows.length > 0){
-        return res.rows;
-      }
-      return null;
-    })
+    .then(res => res.rows)
     .then(user => {
-      if (user !== null) {
+      if (user.length) {
         res.redirect('/');
       } else {
         const templateVars = {
-          user: user
+          data: user
         }
         res.render('login', templateVars);
       }
