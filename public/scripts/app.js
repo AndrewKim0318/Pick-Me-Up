@@ -54,6 +54,10 @@ const removeItemFromCheckoutContainer = function(id) {
   
 }
 
+const calculateTotalCost = function() {
+  console.log($checkoutItemContainer);
+}
+
 
 $(() => {
 
@@ -148,7 +152,7 @@ $(() => {
       $quantityCounter.val(+$quantityCounter.val() + 1);
       changeCounterInCheckoutContainer(grandparent, id);
     }
-    
+    calculateTotalCost();
   });
 
   $minusButton.click(function(event){
@@ -201,7 +205,6 @@ $(() => {
     if ($target.is(".minus-btn-icon")){
       let $parent = $target.parent();
       let $grandParent = $parent.parent();
-      let $greatGrandParent = $grandParent.parent()
       let $menuItem = $grandParent.parent().parent().children(".menu-item");
       let $table = $menuItem.children("tbody");
       let $foodItems = $table.children();
