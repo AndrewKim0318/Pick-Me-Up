@@ -1,11 +1,11 @@
 
-<% if (user){ %>
+<% if (data[0]["name"]){ %>
   <div class="nav-bar-wrapper">
     <div class="nav-bar-card">
       <div class="nav-test">
         <a href="/profile" class="nav-profile">Profile</a>
         <form action="/logout" method="POST">
-          <label for="username">Hello <%= user[0]["name"] %></label>
+          <label for="username">Hello <%= data[0]["name"] %></label>
           <button type="submit">Logout</button>
         </form>
       </div>

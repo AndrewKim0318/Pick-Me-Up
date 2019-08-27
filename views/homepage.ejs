@@ -40,11 +40,11 @@
     <section class="menu-container">
       <div class="menu-item">
 
-        <% for(let key in foodItems) { %>
-          <div class = "<%= foodItems[key]['category']%> inside-menu">
-            <h3><%= foodItems[key]["name"] %></h3>
-            <p><%= foodItems[key]["description"] %></p>
-            <span class="item-price"><%= foodItems[key]["price"] %></span>
+        <% for(let element of data) { %>
+          <div class = "<%= element['category']%> inside-menu">
+            <h3><%= element["item_name"] %></h3>
+            <p><%= element["item_description"] %></p>
+            <span class="item-price"><%= element["cost"] %></span>
             <div class="counter">
               <span class="minus"><i class="far fa-minus-square test"></i></span>
               <input %>" class="menu-item-counter" type="text" value="0">

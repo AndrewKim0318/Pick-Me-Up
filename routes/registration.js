@@ -51,8 +51,10 @@ const queryParams = [id]
     const password = req.body.password;
     const hashedPassword = bcrypt.hashSync(password, 10);
 
-    const queryString = `INSERT INTO users(name, username, phone_number, password, store_id)
-    VALUES ($1, $2, $3, $4, 1) RETURNING *`
+    const queryString = `
+    INSERT INTO users(name, username, phone_number, password, store_id)
+    VALUES ($1, $2, $3, $4, 1) RETURNING *
+    `
 
     const queryParams = [name, username, phoneNumber, hashedPassword];
     db.query(queryString, queryParams)
@@ -62,17 +64,6 @@ const queryParams = [id]
       res.redirect("/");
     })
 
-    // users[id] = {
-    //   id: id,
-    //   name: name,
-    //   username: username,
-    //   phoneNumber: phoneNumber,
-    //   password: hashedPassword
-    // }
-
-    // req.session.userId = id;
-
-    // res.redirect("/");
   });
   return router;
 };

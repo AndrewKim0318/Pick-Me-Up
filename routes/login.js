@@ -3,14 +3,6 @@ const router  = express.Router();
 const bcrypt  = require("bcrypt");
 const users   = require("../server");
 
-const getIdByUsername = function(database, username) {
-  for (let key in database) {
-    if (username === database[key]["username"]) {
-      return key;
-    }
-  }
-}
-
 module.exports = (db) => {
   router.get("/", (req, res) => {
     const id = req.session.userId;
