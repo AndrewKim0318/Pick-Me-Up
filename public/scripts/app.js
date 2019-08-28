@@ -15,6 +15,7 @@ const $addButton = $(".plus");
 const $minusButton = $(".minus");
 const $checkoutItemContainer = $(".checkout-container");
 const $checkoutButton = $(".checkout-btn");
+const $paymentContainer = $(".payment-container");
 let includedItems = [];
 let totalCost = 0;
 
@@ -110,6 +111,7 @@ $(() => {
   $cake.hide();
   $pie.hide();
   $macaron.hide();
+  $paymentContainer.hide();
 
 
   $searchIcon.click(function(event) {
