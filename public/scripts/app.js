@@ -15,7 +15,7 @@ const $addButton = $(".plus");
 const $minusButton = $(".minus");
 const $checkoutItemContainer = $(".checkout-container");
 const $checkoutButton = $(".checkout-btn");
-const $paymentContainer = $(".payment-container");
+const $paymentContainer = $(".checkout-container-submit-form");
 let includedItems = [];
 let totalCost = 0;
 
@@ -291,12 +291,15 @@ $(() => {
 
   $checkoutButton.click(function() {
     event.preventDefault();
+    console.log(this);
+    $paymentContainer.show();
+
     let $tbody = $(this).parent().parent();
     let $orderedItems = $tbody.children(".checkout-item");
     let $totalCost = $tbody.children("tr").children(".chk-out-total").text().replace("Total: $", "");
     
     //For ajax request;
-    const url = "/order";
+    const url = "/pay";
     const method = "POST";
     const dataString = dataSerializationImitator($orderedItems, $totalCost);
 

@@ -56,7 +56,7 @@ module.exports = (db) => {
       });
     }
 
-    router.post("/order", (req, res) => {
+    router.post("/pay", (req, res) => {
      
       const id = req.session.userId;
       let foodItems = req.body.foodItems;
