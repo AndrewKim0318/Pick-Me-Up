@@ -54,18 +54,23 @@
         <%}%>
       </table>
       <table class="checkout-container">
-        <div class ="payment-container">
-          <form action="/pay" method="POST">
+        <div class="checkout-container-submit-form">
+          <form class="submit-form" action="/pay" method="POST">
             <label for="name">Name</label> <br>
-            <input type="text" id="-input-name" name="name" placeholder="Name..."> <br>
+            <input type="text" id="input-name" name="name" placeholder="Name..."> <br>
             <label for="phone">Phone Number</label> <br>
-            <input type="text" id="phoneNumber" name="phone" placeholder="Phone Number..."> <br>
+            <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Phone Number..."> <br>
             <label for="payment">Payment Method</label>
             <br><br>
             <label for="payment-method-person">In Person</label>
             <input type="radio" id="payment-method-person" value="In person" name="rad-btn-person">
             <label for="payment-method-credit">Credit Card</label>
             <input type="radio" id="payment-method-credit" value="Credit Card" name="rad-btn-credit">
+            <div class="reveal-when-credit">
+              <label for="card-number">
+                <input type="text" class="require-if-active" placeholder="Credit card number" datat-require-pair="#payment-method-credit" name="input-credit-card">
+              </label>
+            </div>
             <br><br>
             <input type="submit" value="Submit">
           </form>

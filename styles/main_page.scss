@@ -191,3 +191,37 @@ text-align: left;
   border-radius: 15px;
   color: #d79922;
 }
+
+.checkout-container-submit-form {
+  table-layout: fixed;
+  grid-column: 2;
+  border: 2px solid #4056A1;
+  border-radius: 20px;
+  padding: 15px;
+  margin: 15px;
+  margin-top: 30px;
+  margin-right: 30px;
+}
+
+.reveal-if-active {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  font-size: 16px;
+  transform: scale(0.8);
+  transition: 0.5s;
+}
+
+input[type="radio"]:checked {
+  opacity: 1;
+  max-height: 100px;
+  padding: 10px 20px;
+  transform: scale(1);
+  overflow: visible;
+}
+
+.reveal-when-credit {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+}
