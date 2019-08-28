@@ -23,7 +23,7 @@ const insertIntoCheckoutContainer = function(data, id) {
   let counter = $(data).children(".counter").children("input").val();
 
   const $item = $(`
-  <div class="checkout-item">
+  <table class="checkout-item">
   <h4>${name}</h4>
   <span id="${id}" class="item-count">
     x<input class="menu-item-counter" type="text" value="${counter}" readonly>
@@ -33,7 +33,7 @@ const insertIntoCheckoutContainer = function(data, id) {
     <i class="far fa-plus-square plus-btn-icon"></i>
   </div>
   <span class="item-price">$${price}</span>
-  </div>`);
+  </table>`);
 
   $checkoutItemContainer.prepend($item);
   return $checkoutItemContainer;
