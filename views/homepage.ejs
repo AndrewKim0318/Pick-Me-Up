@@ -56,12 +56,11 @@
       <table class="checkout-container">
         <div class="checkout-container-submit-form">
           <form class="submit-form" action="/pay" method="POST">
-            <label for="name">Name</label> <br>
+            <label for="name">Name</label>
             <input type="text" id="input-name" name="name" placeholder="Name..."> <br>
-            <label for="phone">Phone Number</label> <br>
+            <label for="phone">Phone Number</label>
             <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Phone Number..."> <br>
             <label for="payment">Payment Method</label>
-            <br><br>
             <label for="payment-method-person">In Person</label>
             <input type="radio" id="payment-method-person" value="In person" name="rad-btn-person">
             <label for="payment-method-credit">Credit Card</label>
@@ -72,7 +71,8 @@
               </label>
             </div>
             <br><br>
-            <input type="submit" value="Submit">
+            <button class="order-btn" type="submit">Submit</button>
+            <button class="back-to-checkout-btn" type="button">Back to Checkout</button>
           </form>
         </div>
         <tr><td class="chk-out-total">Total: $0</td></tr>
