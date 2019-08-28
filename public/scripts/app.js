@@ -14,6 +14,7 @@ const $macaron = $(".macarons");
 const $addButton = $(".plus");
 const $minusButton = $(".minus");
 const $checkoutItemContainer = $(".checkout-container");
+const $checkoutButton = $(".checkout-btn");
 let includedItems = [];
 let totalCost = 0;
 
@@ -52,7 +53,7 @@ const removeItemFromCheckoutContainer = function(id) {
   const $table = $counter.parent().parent();
   $table.remove();
 
-}
+};
 
 const calculateTotalCost = function (price, operator) {
 
@@ -69,6 +70,36 @@ const calculateTotalCost = function (price, operator) {
 
   return totalCost;
 
+};
+
+const dataSerializationImitator = function(foodItems, totalCost) {
+  //food_item name food_item quantity total cost
+  let foodItemNameString = "";
+  let foodItemQuantityString = "";
+  let totalCostString = `&totalCost=${totalCost}`
+  let dataString = "";
+
+  foodItems.each(e=> {
+    let foodItemName = $(foodItems[e]).children(".chkout-item-name").text().replace(/\s+/g, "+");
+    let foodItemQuantity = $(foodItems[e]).children(".item-count").children(".menu-item-counter").val();
+    
+    if (!foodItemNameString) {
+      foodItemNameString += `foodItems="${foodItemName}"`;
+    } else {
+      foodItemNameString += `+"${foodItemName}"`;
+    }
+
+    if (!foodItemQuantityString) {
+      foodItemQuantityString += `&foodItemQuantity=${foodItemQuantity}`;
+    } else {
+      foodItemQuantityString += `+${foodItemQuantity}`;
+    }
+
+    dataString = foodItemNameString + foodItemQuantityString + totalCostString;
+  });
+  
+  console.log(dataString);
+  return dataString;
 }
 
 $(() => {
@@ -249,10 +280,28 @@ $(() => {
           let $foundParent = $(foundName).parent();
           let $foundCounter = $foundParent.children(".counter");
           let $foundInput = $foundCounter.children(".menu-item-counter");
-          $foundInput.val($quantityCounter.val())
+          $foundInput.val($quantityCounter.val());
         }
       });
 
     }
+  })
+
+  $checkoutButton.click(function() {
+    event.preventDefault();
+    let $tbody = $(this).parent().parent();
+    let $orderedItems = $tbody.children(".checkout-item");
+    let $totalCost = $tbody.children("tr").children(".chk-out-total").text().replace("Total: $", "");
+    
+    //For ajax request;
+    const url = "/order";
+    const method = "POST";
+    const dataString = dataSerializationImitator($orderedItems, $totalCost);
+
+    $.ajax({
+      url: url,
+      method: method,
+      data: dataString,
+    });
   })
 });
