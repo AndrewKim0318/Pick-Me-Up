@@ -24,15 +24,15 @@ const insertIntoCheckoutContainer = function(data, id) {
 
   const $item = $(`
   <table class="checkout-item">
-  <h4>${name}</h4>
-  <span id="${id}" class="item-count">
+  <td class="chkout-item-name">${name}</td>
+  <td id="${id}" class="item-count">
     x<input class="menu-item-counter" type="text" value="${counter}" readonly>
-  </span>
-  <div class="plus-minus-btns">
+  </td>
+  <td class="plus-minus-btns">
     <i class="far fa-minus-square minus-btn-icon"></i>
     <i class="far fa-plus-square plus-btn-icon"></i>
-  </div>
-  <span class="item-price">$${price}</span>
+  </td>
+  <td class="item-price">$${price}</td>
   </table>`);
 
   $checkoutItemContainer.prepend($item);

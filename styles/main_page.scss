@@ -157,14 +157,11 @@ h1 {
 }
 
 .checkout-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
   margin: 25px;
   border-bottom: 2px solid #c5cbe3;
 }
 
-h4 {
+chkout-item-name {
  padding-left: 10px;
  margin: 0px;
 }
@@ -173,6 +170,13 @@ h4 {
 text-align: center;
 }
 
+.plus-minus-btns {
+  white-space: nowrap;
+}
+
+.item-count {
+  white-space: nowrap;
+}
 .checkout-btn {
   text-align: center;
   border: 4px solid #F13C20 ;
