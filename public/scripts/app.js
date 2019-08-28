@@ -15,6 +15,7 @@ const $addButton = $(".plus");
 const $minusButton = $(".minus");
 const $checkoutItemContainer = $(".checkout-container");
 let includedItems = [];
+let totalCost = 0;
 
 const insertIntoCheckoutContainer = function(data, id) {
 
@@ -32,7 +33,7 @@ const insertIntoCheckoutContainer = function(data, id) {
     <i class="far fa-minus-square minus-btn-icon"></i>
     <i class="far fa-plus-square plus-btn-icon"></i>
   </td>
-  <td class="item-price">$${price}</td>
+  <td class="item-price">$<input class="menu-item-counter" type="text" value="${price}" readonly></td>
   </tr>`);
 
   $checkoutItemContainer.prepend($item);
@@ -53,15 +54,21 @@ const removeItemFromCheckoutContainer = function(id) {
 
 }
 
-const calculateTotalCost = function () {
+const calculateTotalCost = function (price, operator) {
+
+  if (operator === "add") {
+    totalCost += price;
+  } else {
+    totalCost -= price;
+  }
+
   let $tableToEvaluate = $checkoutItemContainer;
-  let $itemsToEvaluate = $tableToEvaluate.children();
-  $itemsToEvaluate.each(e => {
-    let itemQuantity = $($itemsToEvaluate[e]).children("tbody").children("tr").children(".item-count").children(".menu-item-counter").val();
-    let itemCost = $($itemsToEvaluate[e]).children("tbody").children("tr");
-    console.log(itemCost);
-    console.log(itemQuantity);
-  })
+  let $totalPriceContainer = $tableToEvaluate.children("tbody").children("tr").children(".chk-out-total");
+  let totalCostDisplay = totalCost.toFixed(2); // Changes the type to a string, useful for displaying, not useful for computing
+  $totalPriceContainer.text(`Total: $${totalCostDisplay}`);
+
+  return totalCost;
+
 }
 
 $(() => {
@@ -147,6 +154,7 @@ $(() => {
     const nameToCheck = $(grandparent).children(".item-name").text();
     let $quantityCounter = $(parent).children(".menu-item-counter");
     const id = nameToCheck.replace(/\s+/g, '');
+    const price = Number($(grandparent).children(".item-price").text());
     
     if (!includedItems.includes(id)) {
       $quantityCounter.val(+$quantityCounter.val() + 1);
@@ -156,7 +164,7 @@ $(() => {
       $quantityCounter.val(+$quantityCounter.val() + 1);
       changeCounterInCheckoutContainer(grandparent, id);
     }
-    calculateTotalCost();
+    calculateTotalCost(price, "add");
 
   });
 
@@ -168,11 +176,14 @@ $(() => {
     const nameToCheck = $(grandparent).children(".item-name").text();
     let $quantityCounter = $(parent).children(".menu-item-counter");
     const id = nameToCheck.replace(/\s+/g, '');
+    const price = Number($(grandparent).children(".item-price").text());
 
     if(Number($quantityCounter.val()) > 1) {
+      calculateTotalCost(price, "subtract");
       $quantityCounter.val(+$quantityCounter.val() - 1);
       changeCounterInCheckoutContainer(grandparent, id);
     } else if (Number($quantityCounter.val()) === 1) {
+      calculateTotalCost(price, "subtract");
       $quantityCounter.val(+$quantityCounter.val() - 1);
       let newArray = includedItems.filter(item => item !== id);
       includedItems = newArray;
@@ -195,7 +206,8 @@ $(() => {
       let $quantityCounter = $quantityCounterContainer.children(".menu-item-counter");
 
       $quantityCounter.val(+$quantityCounter.val() + 1);
-
+      const price = $grandParent.children(".item-price").children(".menu-item-counter").val();
+      
       $nameContainer.each(e => {
         if($($nameContainer[e]).text() === nameOfItem){
           let foundName = $nameContainer[e];
@@ -205,6 +217,7 @@ $(() => {
           $foundInput.val($quantityCounter.val())
         }
       });
+      calculateTotalCost(Number(price), "add");
 
     }
     if ($target.is(".minus-btn-icon")){
@@ -218,11 +231,13 @@ $(() => {
       let $quantityCounterContainer = $grandParent.children(".item-count");
       let $quantityCounter = $quantityCounterContainer.children(".menu-item-counter");
       let id = nameOfItem.replace(/\s+/g, '');
+      const price = $grandParent.children(".item-price").children(".menu-item-counter").val();
       
-
       if ($quantityCounter.val() > 1){
+        calculateTotalCost(Number(price), "subtract");
         $quantityCounter.val(+$quantityCounter.val() - 1);
       } else if (Number($quantityCounter.val()) === 1) {
+        calculateTotalCost(Number(price), "subtract");
         $quantityCounter.val(+$quantityCounter.val() - 1);
         let newArray = includedItems.filter(item => item !== id);
         includedItems = newArray;
