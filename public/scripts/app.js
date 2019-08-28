@@ -16,6 +16,7 @@ const $minusButton = $(".minus");
 const $checkoutItemContainer = $(".checkout-container");
 const $checkoutButton = $(".checkout-btn");
 const $paymentContainer = $(".checkout-container-submit-form");
+const $orderButton = $(".order-btn");
 let includedItems = [];
 let totalCost = 0;
 
@@ -289,12 +290,17 @@ $(() => {
     }
   })
 
-  $checkoutButton.click(function() {
+  $checkoutButton.click(function(event) {
     event.preventDefault();
-    console.log(this);
     $paymentContainer.show();
 
-    let $tbody = $(this).parent().parent();
+  });
+
+  $orderButton.click(function(event) {
+    event.preventDefault();
+  
+    console.log(this);
+    let $tbody = $(this).parent().parent().children(".checkout-container").children("tbody");
     let $orderedItems = $tbody.children(".checkout-item");
     let $totalCost = $tbody.children("tr").children(".chk-out-total").text().replace("Total: $", "");
     
@@ -308,5 +314,5 @@ $(() => {
       method: method,
       data: dataString,
     });
-  })
+  });
 });

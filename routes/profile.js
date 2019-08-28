@@ -16,15 +16,15 @@ module.exports = (db) => {
     .then(res => res.rows)
     .then(user => {
       if(user.length){
-    const templateVars = {
-      data: user
-    }
-    res.render('profile', templateVars);
-  } else {
-    res.redirect("/");
-  }
-  })
-});
+      const templateVars = {
+        data: user
+      }
+        res.render('profile', templateVars);
+      } else {
+      res.redirect("/");
+      }
+    })
+  });
 
   router.post("/edit", (req,res) => {
     const id = req.session.userId;

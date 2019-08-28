@@ -82,7 +82,6 @@ module.exports = (db) => {
       } while (match != null);
       // End of script taken from stackOverflow
 
-      console.log(totalCost);
       if(id) {
         let checkoutsQueryString = `
           INSERT INTO checkouts(user_id, total_cost, store_id)
@@ -101,7 +100,6 @@ module.exports = (db) => {
               FROM food_items
               WHERE item_name = $1
             `
-            
             let foodItemQueryParams = [foodItemArray[i]];
   
             db.query(foodItemQueryString, foodItemQueryParams)
@@ -110,7 +108,7 @@ module.exports = (db) => {
               let foodItemId = id["id"];
   
               let checkoutItemsQueryString = `
-                INSERT INTO checkout_lists(food_item_id, checkout_id, quantity)
+                INSERT INTO checkout_items(food_item_id, checkout_id, quantity)
                 VALUES ($1, $2, $3);
               `
               let checkoutItemsQueryParam = [foodItemId, checkoutId, foodItemQuantityArray[i]];
