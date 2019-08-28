@@ -84,7 +84,7 @@ const dataSerializationImitator = function(foodItems, totalCost) {
   foodItems.each(e=> {
     let foodItemName = $(foodItems[e]).children(".chkout-item-name").text().replace(/\s+/g, "+");
     let foodItemQuantity = $(foodItems[e]).children(".item-count").children(".menu-item-counter").val();
-    
+
     if (!foodItemNameString) {
       foodItemNameString += `foodItems="${foodItemName}"`;
     } else {
@@ -99,7 +99,7 @@ const dataSerializationImitator = function(foodItems, totalCost) {
 
     dataString = foodItemNameString + foodItemQuantityString + totalCostString;
   });
-  
+
   console.log(dataString);
   return dataString;
 }
@@ -189,7 +189,7 @@ $(() => {
     let $quantityCounter = $(parent).children(".menu-item-counter");
     const id = nameToCheck.replace(/\s+/g, '');
     const price = Number($(grandparent).children(".item-price").text());
-    
+
     if (!includedItems.includes(id)) {
       $quantityCounter.val(+$quantityCounter.val() + 1);
       includedItems.push(id);
@@ -241,7 +241,7 @@ $(() => {
 
       $quantityCounter.val(+$quantityCounter.val() + 1);
       const price = $grandParent.children(".item-price").children(".menu-item-counter").val();
-      
+
       $nameContainer.each(e => {
         if($($nameContainer[e]).text() === nameOfItem){
           let foundName = $nameContainer[e];
@@ -266,7 +266,7 @@ $(() => {
       let $quantityCounter = $quantityCounterContainer.children(".menu-item-counter");
       let id = nameOfItem.replace(/\s+/g, '');
       const price = $grandParent.children(".item-price").children(".menu-item-counter").val();
-      
+
       if ($quantityCounter.val() > 1){
         calculateTotalCost(Number(price), "subtract");
         $quantityCounter.val(+$quantityCounter.val() - 1);
@@ -292,18 +292,22 @@ $(() => {
 
   $checkoutButton.click(function(event) {
     event.preventDefault();
-    $paymentContainer.show();
-
+    $checkoutItemContainer.slideToggle("complete", function() {
+      $checkoutItemContainer.hide();
+    })
+    $paymentContainer.slideToggle("complete", function() {
+      $paymentContainer.focus();
+    })
   });
 
   $orderButton.click(function(event) {
     event.preventDefault();
-  
+
     console.log(this);
     let $tbody = $(this).parent().parent().children(".checkout-container").children("tbody");
     let $orderedItems = $tbody.children(".checkout-item");
     let $totalCost = $tbody.children("tr").children(".chk-out-total").text().replace("Total: $", "");
-    
+
     //For ajax request;
     const url = "/pay";
     const method = "POST";
