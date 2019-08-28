@@ -9,12 +9,13 @@
 }
 
 .login-img {
-position: relative;
-left: 100px;
-top: 100px;
+position: fixed;
+
+top: 5px;
 opacity: 0.8;
-width: 40vw;
-height: 50vh;
+width: 100%;
+height: 100%;
+display: flex;
 }
 
 .log-in-form {

@@ -159,14 +159,15 @@ h1 {
 
 .checkout-item {
   width: 100%;
+  display: flex;
+  border-bottom: 2px solid #c5cbe3;
   margin-top: 10px;
   margin-bottom: 10px;
-  border-bottom: 2px solid #c5cbe3;
+
 }
 
-chkout-item-name {
- padding-left: 10px;
- width: 50%;
+.chkout-item-name {
+ width: 45%;
  margin: 0px;
  white-space: nowrap;
 }
@@ -177,15 +178,16 @@ text-align: left;
 
 .plus-minus-btns {
   white-space: nowrap;
+  width: 15%;
 }
 
 .item-count {
   white-space: nowrap;
+  width: 10%;
 }
 .checkout-btn {
   text-align: center;
-  border: 4px solid #F13C20 ;
+  border: 3px solid #d79922;
   border-radius: 15px;
-  background: #F13C20;
-  color: white;
+  color: #d79922;
 }
