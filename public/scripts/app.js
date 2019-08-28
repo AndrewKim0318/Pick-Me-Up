@@ -40,19 +40,29 @@ const insertIntoCheckoutContainer = function(data, id) {
 };
 
 const changeCounterInCheckoutContainer = function(data, id) {
-  const $value = $checkoutItemContainer.children(".checkout-item").children(`#${id}`).children(".menu-item-counter");
+  const $value = $checkoutItemContainer.children("tbody").children("tr").children(`#${id}`).children(".menu-item-counter");
   const $counter = $(data).children(".counter").children("input").val();
   $value.val(`${$counter}`);
 
 };
 
 const removeItemFromCheckoutContainer = function(id) {
-  const $counter = $checkoutItemContainer.children(".checkout-item").children(`#${id}`);
-  const $parent = $counter.parent();
-  $parent.remove();
+  const $counter = $checkoutItemContainer.children("tbody").children("tr").children(`#${id}`).children(".menu-item-counter");
+  const $table = $counter.parent().parent();
+  $table.remove();
 
 }
 
+const calculateTotalCost = function () {
+  let $tableToEvaluate = $checkoutItemContainer;
+  let $itemsToEvaluate = $tableToEvaluate.children();
+  $itemsToEvaluate.each(e => {
+    let itemQuantity = $($itemsToEvaluate[e]).children("tbody").children("tr").children(".item-count").children(".menu-item-counter").val();
+    let itemCost = $($itemsToEvaluate[e]).children("tbody").children("tr");
+    console.log(itemCost);
+    console.log(itemQuantity);
+  })
+}
 
 $(() => {
 
@@ -68,7 +78,6 @@ $(() => {
     event.preventDefault();
 
     $searchContainer.animate({width: "toggle"});
-    console.log($searchIcon[0].className);
 
     if($changingIcon[0].className === "fas fa-search"){
       $changingIcon.removeClass("fa-search");
@@ -138,7 +147,7 @@ $(() => {
     const nameToCheck = $(grandparent).children(".item-name").text();
     let $quantityCounter = $(parent).children(".menu-item-counter");
     const id = nameToCheck.replace(/\s+/g, '');
-
+    
     if (!includedItems.includes(id)) {
       $quantityCounter.val(+$quantityCounter.val() + 1);
       includedItems.push(id);
@@ -147,6 +156,7 @@ $(() => {
       $quantityCounter.val(+$quantityCounter.val() + 1);
       changeCounterInCheckoutContainer(grandparent, id);
     }
+    calculateTotalCost();
 
   });
 
@@ -176,11 +186,11 @@ $(() => {
     if ($target.is(".plus-btn-icon")){
       let $parent = $target.parent();
       let $grandParent = $parent.parent();
-      let $menuItem = $grandParent.parent().parent().children(".menu-item");
+      let $menuItem = $grandParent.parent().parent().parent().children(".menu-item");
       let $table = $menuItem.children("tbody");
       let $foodItems = $table.children();
       let $nameContainer = $foodItems.children(".item-name");
-      let nameOfItem = $grandParent.children("h4").text();
+      let nameOfItem = $grandParent.children(".chkout-item-name").text();
       let $quantityCounterContainer = $grandParent.children(".item-count");
       let $quantityCounter = $quantityCounterContainer.children(".menu-item-counter");
 
@@ -200,20 +210,19 @@ $(() => {
     if ($target.is(".minus-btn-icon")){
       let $parent = $target.parent();
       let $grandParent = $parent.parent();
-      let $greatGrandParent = $grandParent.parent()
-      let $menuItem = $grandParent.parent().parent().children(".menu-item");
+      let $menuItem = $grandParent.parent().parent().parent().children(".menu-item");
       let $table = $menuItem.children("tbody");
       let $foodItems = $table.children();
       let $nameContainer = $foodItems.children(".item-name");
-      let nameOfItem = $grandParent.children("h4").text();
+      let nameOfItem = $grandParent.children(".chkout-item-name").text();
       let $quantityCounterContainer = $grandParent.children(".item-count");
       let $quantityCounter = $quantityCounterContainer.children(".menu-item-counter");
       let id = nameOfItem.replace(/\s+/g, '');
+      
 
       if ($quantityCounter.val() > 1){
         $quantityCounter.val(+$quantityCounter.val() - 1);
       } else if (Number($quantityCounter.val()) === 1) {
-        console.log("clicked");
         $quantityCounter.val(+$quantityCounter.val() - 1);
         let newArray = includedItems.filter(item => item !== id);
         includedItems = newArray;
