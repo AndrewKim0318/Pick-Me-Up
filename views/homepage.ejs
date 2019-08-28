@@ -57,23 +57,22 @@
         <div class="checkout-container-submit-form">
           <form class="submit-form" action="/pay" method="POST">
             <div class="form-rows">
-                <label for="name">Name</label>
+                <label class="submit-form-label" for="name">Name</label>
                 <input type="text" id="input-name" name="name" placeholder="Name...">
             </div><br>
             <div class="form-rows">
-                <label for="phone">Phone Number</label>
+                <label class="submit-form-label" for="phone">Phone Number</label>
                 <input type="text" id="input-number" name="number" placeholder="Phone Number...">
             </div><br>
-            <div class="form-rows">
-                <label for="payment">Payment Method</label>
-                <label for="payment-method-person">In Person</label>
-                <input type="radio" id="payment-method-person" value="In person" name="rad-btn-person">
-                <label for="payment-method-credit">Credit Card</label>
-                <input type="radio" id="payment-method-credit" value="Credit Card" name="rad-btn-credit">
+                <label class="submit-form-label" for="payment">Payment Method</label><br>
+            <div class="form-rows" id="payment-methods">
+                <label class="submit-form-label" for="payment-method-person">In Person</label>
+                <input type="radio" id="payment-method-person" value="In person" name="rad-btn">
+                <label class="submit-form-label" for="payment-method-credit">Credit Card</label>
+                <input type="radio" id="payment-method-credit" value="Credit Card" name="rad-btn">
             </div>
-
             <div class="reveal-when-credit">
-              <label for="card-number">
+              <label class="submit-form-label" for="card-number">
                 <input type="text" class="require-if-active" placeholder="Credit card number" datat-require-pair="#payment-method-credit" name="input-credit-card">
               </label>
             </div>

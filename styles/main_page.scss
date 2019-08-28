@@ -225,11 +225,13 @@ input[type="radio"]:checked {
   border: none;
   border-bottom: 1px solid;
   width: 50%;
+  letter-spacing: 4px;
 }
 #input-number {
   border: none;
   border-bottom: 1px solid;
   width: 50%;
+  letter-spacing: 4px;
 }
 .reveal-when-credit {
   opacity: 0;
@@ -240,4 +242,27 @@ input[type="radio"]:checked {
 .form-rows {
   display: flex;
   justify-content: space-between;
+}
+
+#payment-methods {
+  border: 1px solid #c5cbe3;
+  padding: 10px;
+}
+
+.order-btn {
+  border: none;
+  padding: 10px;
+  font-family: 'Raleway', sans-serif;
+  letter-spacing: 4px;
+}
+
+.back-to-checkout-btn {
+  border: none;
+  padding: 10px;
+  font-family: 'Raleway', sans-serif;
+  letter-spacing: 4px;
+}
+
+.submit-form-label {
+  padding-left: 0px;
 }
