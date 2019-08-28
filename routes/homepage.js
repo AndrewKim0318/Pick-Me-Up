@@ -58,6 +58,12 @@ module.exports = (db) => {
 
     router.post("/order", (req, res) => {
      
+      const id = req.session.userId;
+      let foodItems = req.body.foodItems;
+      let foodItemQuantity = req.body.foodItemQuantity;
+      let totalCost = req.body.totalCost;
+      let foodItemQuantityArray = foodItemQuantity.split(" ");
+
       //Taken from stackOverflow
       //stackOverflow url: https://stackoverflow.com/questions/2817646/javascript-split-string-on-space-or-on-quotes-to-array?lq=1
       //The parenthesis in the regex creates a captured group within the quotes
@@ -76,36 +82,43 @@ module.exports = (db) => {
       } while (match != null);
       // End of script taken from stackOverflow
 
-      const id = req.session.userId;
-      let foodItems = req.body.foodItems;
-      let foodItemQuantity = req.body.foodItemQuantity;
-      let totalCost = req.body.totalCost;
-      let foodItemQuantityArray = foodItemQuantity.split(" ");
-
       console.log(totalCost);
       if(id) {
-        let queryString = `
+        let checkoutsQueryString = `
           INSERT INTO checkouts(user_id, total_cost, store_id)
-          VALUES ($1, $2, 1);
-
+          VALUES ($1, $2, 1)
+          RETURNING id;
         `
-        let queryParams = [id, totalCost];
+        let checkoutsQueryParams = [id, totalCost];
 
-        for (let i=0; i< foodItemArray.length; i++) {
-          queryString += `
-            SELECT id
-            FROM food_items
-            WHERE name = $1
-          `
-          
-          queryParams = [foodItemArray[i]];
-
-          
-          console.log(foodItemArray[i]);
-          console.log(foodItemQuantityArray[i]);
-        }
-
-        console.log(queryString);
+        db.query(checkoutsQueryString, checkoutsQueryParams)
+        .then(res=>res.rows[0])
+        .then(id => {
+          let checkoutId = id["id"];
+          for (let i=0; i< foodItemArray.length; i++) {
+            let foodItemQueryString = `
+              SELECT id
+              FROM food_items
+              WHERE item_name = $1
+            `
+            
+            let foodItemQueryParams = [foodItemArray[i]];
+  
+            db.query(foodItemQueryString, foodItemQueryParams)
+            .then(res => res.rows[0])
+            .then(id => {
+              let foodItemId = id["id"];
+  
+              let checkoutItemsQueryString = `
+                INSERT INTO checkout_lists(food_item_id, checkout_id, quantity)
+                VALUES ($1, $2, $3);
+              `
+              let checkoutItemsQueryParam = [foodItemId, checkoutId, foodItemQuantityArray[i]];
+              
+              db.query(checkoutItemsQueryString, checkoutItemsQueryParam);
+            })
+          }
+        })
       }
     })
 
