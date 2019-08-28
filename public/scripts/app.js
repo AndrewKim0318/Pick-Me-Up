@@ -21,7 +21,7 @@ const insertIntoCheckoutContainer = function(data, id) {
   const name = $(data).children(".item-name").text();
   const price = $(data).children(".item-price").text();
   let counter = $(data).children(".counter").children("input").val();
-  
+
   const $item = $(`
   <div class="checkout-item">
   <h4>${name}</h4>
@@ -37,7 +37,6 @@ const insertIntoCheckoutContainer = function(data, id) {
 
   $checkoutItemContainer.prepend($item);
   return $checkoutItemContainer;
-
 };
 
 const changeCounterInCheckoutContainer = function(data, id) {
@@ -51,7 +50,7 @@ const removeItemFromCheckoutContainer = function(id) {
   const $counter = $checkoutItemContainer.children(".checkout-item").children(`#${id}`);
   const $parent = $counter.parent();
   $parent.remove();
-  
+
 }
 
 
@@ -110,7 +109,7 @@ $(() => {
     $pie.hide();
     $macaron.hide();
   });
-  
+
   $pieButton.click(function(event) {
     event.preventDefault();
 
@@ -120,7 +119,7 @@ $(() => {
     $pie.show();
     $macaron.hide();
   });
-  
+
   $macaronButton.click(function(event) {
     event.preventDefault();
 
@@ -148,7 +147,7 @@ $(() => {
       $quantityCounter.val(+$quantityCounter.val() + 1);
       changeCounterInCheckoutContainer(grandparent, id);
     }
-    
+
   });
 
   $minusButton.click(function(event){
@@ -169,7 +168,7 @@ $(() => {
       includedItems = newArray;
       removeItemFromCheckoutContainer(id);
     }
-    
+
   })
 
   $(document).click(function(e) {
@@ -196,7 +195,7 @@ $(() => {
           $foundInput.val($quantityCounter.val())
         }
       });
-      
+
     }
     if ($target.is(".minus-btn-icon")){
       let $parent = $target.parent();
@@ -229,7 +228,7 @@ $(() => {
           $foundInput.val($quantityCounter.val())
         }
       });
-      
+
     }
   })
 });
