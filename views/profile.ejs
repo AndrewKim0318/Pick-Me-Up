@@ -41,7 +41,18 @@
         <label for="order" class="order-list">Order</label>
         <label for="cost" class="order-cost">Total Cost</label>
       </header>
-      <section class="order-history-container"></section>
+      <table class="user-history">
+        <% if (dateArray.length) { %>
+          <% for (let i = dateArray.length-1; i >= 0; i--) { %>
+            <tr class="individual-user">
+              <td for="date" class="order-date"><%= dateArray[i] %></td>
+            <td for="order" class="order-list"><%= itemArray[i] %></td>
+            <td for="cost" class="order-cost"><%= costArray[i] %></td>
+            </tr>
+          <% } %>
+        <% } %>
+        </table>
+    <section class="order-history-container"></section>
     </section>
   </main>
 

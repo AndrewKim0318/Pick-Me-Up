@@ -4,7 +4,7 @@ CREATE TABLE checkouts (
   id SERIAL PRIMARY KEY NOT NULL,
   user_id INT REFERENCES users(id) ON DELETE CASCADE,
   picked_up BOOLEAN DEFAULT TRUE,
-  order_date DATE DEFAULT NOW(),
+  order_date TIMESTAMP DEFAULT NOW(),
   total_cost DECIMAL(6,2) NOT NULL,
   store_id INTEGER REFERENCES stores(id) ON DELETE CASCADE
   );

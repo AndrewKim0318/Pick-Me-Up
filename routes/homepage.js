@@ -21,14 +21,12 @@ module.exports = (db) => {
       queryParams = [id];
       db.query(queryString, queryParams)
       .then(res => {
-        console.log(res.rows);
         if(res.rows.length > 0){
           return res.rows;
         }
         return null;
       })
       .then(data => {
-        console.log("data is:", data);
         const templateVars = {
           data:data
         }
