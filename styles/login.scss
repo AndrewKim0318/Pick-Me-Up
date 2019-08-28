@@ -11,8 +11,9 @@
 .log-in-form {
   z-index: 1;
   display: block;
+  position: relative;
   margin-top: 150px;
-  margin-bottom: 200px;
+  margin-bottom: auto;
   margin-left: auto;
   margin-right: auto;
   background-color: transparent;
@@ -22,9 +23,6 @@
   padding: 25px;
 }
 
-.log-in-form:hover {
-
-}
 
 .log-in-title {
   display: flex;
