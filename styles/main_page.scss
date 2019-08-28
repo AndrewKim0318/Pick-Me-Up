@@ -194,6 +194,7 @@ text-align: left;
 
 .checkout-container-submit-form {
   table-layout: fixed;
+  display: inline-grid;
   grid-column: 2;
   border: 2px solid #4056A1;
   border-radius: 20px;
@@ -220,8 +221,23 @@ input[type="radio"]:checked {
   overflow: visible;
 }
 
+#input-name {
+  border: none;
+  border-bottom: 1px solid;
+  width: 50%;
+}
+#input-number {
+  border: none;
+  border-bottom: 1px solid;
+  width: 50%;
+}
 .reveal-when-credit {
   opacity: 0;
   max-height: 0;
   overflow: hidden;
+}
+
+.form-rows {
+  display: flex;
+  justify-content: space-between;
 }
