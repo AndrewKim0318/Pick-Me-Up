@@ -3,30 +3,27 @@
   margin: auto;
   grid-template-columns: repeat(3, 1fr);
   background: white;
-  height: 100vh;
+  height: 79vh;
   width: 100%;
   font-family: 'Raleway', sans-serif;
-}
-
-.login-img {
-position: fixed;
-
-top: 5px;
-opacity: 0.8;
-width: 100%;
-height: 100%;
-display: flex;
 }
 
 .log-in-form {
   z-index: 1;
   display: block;
-  position: relative;
-  left: 160px;
-  top: 100px;
+  margin-top: 150px;
+  margin-bottom: 200px;
+  margin-left: auto;
+  margin-right: auto;
   background-color: transparent;
   letter-spacing: 4px;
   font-weight: 300;
+  border: 2px solid #c5cbe3;
+  padding: 25px;
+}
+
+.log-in-form:hover {
+
 }
 
 .log-in-title {
@@ -50,9 +47,13 @@ display: flex;
 
 .log-in-submit-button {
   border: none;
+  display: flex;
   background: transparent;
   color: black;
-  margin-left: 120px;
+  margin-left: 90px;
+  padding: 15px;
+  letter-spacing: 4px;
+
 }
 
 .log-in-label {
@@ -60,7 +61,6 @@ display: flex;
   align-self: center;
   padding-right: 1em;
   color: black;
-  padding: 1em;
 }
 
 .log-in-input {
