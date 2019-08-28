@@ -40,16 +40,15 @@ const insertIntoCheckoutContainer = function(data, id) {
 };
 
 const changeCounterInCheckoutContainer = function(data, id) {
-  const $value = $checkoutItemContainer.children(".checkout-item").children("tbody").children("tr").children(`#${id}`).children(".menu-item-counter");
+  const $value = $checkoutItemContainer.children("tbody").children("tr").children(`#${id}`).children(".menu-item-counter");
   const $counter = $(data).children(".counter").children("input").val();
-  console.log(data);
   $value.val(`${$counter}`);
 
 };
 
 const removeItemFromCheckoutContainer = function(id) {
-  const $counter = $checkoutItemContainer.children(".checkout-item").children("tbody").children("tr").children(`#${id}`).children(".menu-item-counter");
-  const $table = $counter.parent().parent().parent().parent();
+  const $counter = $checkoutItemContainer.children("tbody").children("tr").children(`#${id}`).children(".menu-item-counter");
+  const $table = $counter.parent().parent();
   $table.remove();
 
 }
@@ -79,7 +78,6 @@ $(() => {
     event.preventDefault();
 
     $searchContainer.animate({width: "toggle"});
-    console.log($searchIcon[0].className);
 
     if($changingIcon[0].className === "fas fa-search"){
       $changingIcon.removeClass("fa-search");
@@ -188,7 +186,7 @@ $(() => {
     if ($target.is(".plus-btn-icon")){
       let $parent = $target.parent();
       let $grandParent = $parent.parent();
-      let $menuItem = $grandParent.parent().parent().parent().parent().children(".menu-item");
+      let $menuItem = $grandParent.parent().parent().parent().children(".menu-item");
       let $table = $menuItem.children("tbody");
       let $foodItems = $table.children();
       let $nameContainer = $foodItems.children(".item-name");
@@ -212,7 +210,7 @@ $(() => {
     if ($target.is(".minus-btn-icon")){
       let $parent = $target.parent();
       let $grandParent = $parent.parent();
-      let $menuItem = $grandParent.parent().parent().parent().parent().children(".menu-item");
+      let $menuItem = $grandParent.parent().parent().parent().children(".menu-item");
       let $table = $menuItem.children("tbody");
       let $foodItems = $table.children();
       let $nameContainer = $foodItems.children(".item-name");
@@ -225,11 +223,10 @@ $(() => {
       if ($quantityCounter.val() > 1){
         $quantityCounter.val(+$quantityCounter.val() - 1);
       } else if (Number($quantityCounter.val()) === 1) {
-        console.log("clicked");
         $quantityCounter.val(+$quantityCounter.val() - 1);
         let newArray = includedItems.filter(item => item !== id);
         includedItems = newArray;
-        $grandParent.parent().parent().remove();
+        $grandParent.remove();
       }
       $nameContainer.each(e => {
         if($($nameContainer[e]).text() === nameOfItem){
