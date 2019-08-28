@@ -15,6 +15,7 @@ const $addButton = $(".plus");
 const $minusButton = $(".minus");
 const $checkoutItemContainer = $(".checkout-container");
 let includedItems = [];
+let totalCost = 0;
 
 const insertIntoCheckoutContainer = function(data, id) {
 
@@ -32,7 +33,7 @@ const insertIntoCheckoutContainer = function(data, id) {
     <i class="far fa-minus-square minus-btn-icon"></i>
     <i class="far fa-plus-square plus-btn-icon"></i>
   </td>
-  <td class="item-price">$${price}</td>
+  <td class="item-price">$<input class="menu-item-counter" type="text" value="${price}" readonly></td>
   </tr>`);
 
   $checkoutItemContainer.prepend($item);
@@ -56,12 +57,16 @@ const removeItemFromCheckoutContainer = function(id) {
 const calculateTotalCost = function () {
   let $tableToEvaluate = $checkoutItemContainer;
   let $itemsToEvaluate = $tableToEvaluate.children();
+  
   $itemsToEvaluate.each(e => {
-    let itemQuantity = $($itemsToEvaluate[e]).children("tbody").children("tr").children(".item-count").children(".menu-item-counter").val();
-    let itemCost = $($itemsToEvaluate[e]).children("tbody").children("tr");
-    console.log(itemCost);
-    console.log(itemQuantity);
+    let itemQuantityString = $($itemsToEvaluate[e]).children("tr").children(".item-count").children(".menu-item-counter").val();
+    let itemCostString = $($itemsToEvaluate[e]).children("tr").children(".item-price").children(".menu-item-counter").val();
+    let itemQuantity = Number(itemQuantityString);
+    let itemCost = Number(itemCostString);
+    
+    totalCost += itemCost;
   })
+  console.log(totalCost);
 }
 
 $(() => {
