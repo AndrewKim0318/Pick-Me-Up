@@ -24,8 +24,10 @@
         <button class="search-icon"><i id="change-icon" class="fas fa-search"></i></button>
         <div class="search-container">
           <form action="/search" method="POST" style="margin-bottom: 0px;">
-            <input class="search-input" type="text" name="name" placeholder="Search items.." />
-            <button type="submit" name="submit" class="search-button"><i class="fas fa-search"></i></button>
+            <input list="food-names" class="search-input" name="name" placeholder="Search items.." autocomplete="off"/>
+            <datalist id="food-names">
+            </datalist>
+            <button type="submit" name="submit" class="search-button"><i id="search-button" class="fas fa-search"></i></button>
           </form>
         </div>
       </div>
