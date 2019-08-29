@@ -196,6 +196,7 @@ text-align: left;
 
 .checkout-container-submit-form {
   table-layout: fixed;
+  z-index: 10;
   display: inline-grid;
   grid-column: 2;
   border: 2px solid #4056A1;
