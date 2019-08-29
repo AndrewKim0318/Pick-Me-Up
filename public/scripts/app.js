@@ -170,6 +170,7 @@ const switchDisplay = function(category) {
 
 $(() => {
 
+  $(".reveal-when-credit").hide();
   $finalMessage.hide();
   $searchContainer.hide();
   switchDisplay("pastries");
@@ -374,6 +375,8 @@ $(() => {
       $paymentContainer.css("opacity", "1");
       $paymentContainer.hide();
       $checkoutItemContainer.slideToggle();
+      $("#input-name").val("");
+      $("#input-number").val("");
       restoreDefault();
     }, 2000)
 
@@ -458,5 +461,22 @@ $(() => {
         }, 1000);
       }
     });
+  });
+
+  $("#payment-method-credit").click(function() {
+
+    document.getElementById("payment-method-credit").checked = true;
+    if(document.getElementById("payment-method-credit").checked){
+      $(".reveal-when-credit").show();
+      console.log("in checked");
+    }
+  });
+
+  $("#payment-method-person").click(function() {
+
+    document.getElementById("payment-method-credit").checked = false;
+    
+    $(".reveal-when-credit").hide();
+      
   });
 });

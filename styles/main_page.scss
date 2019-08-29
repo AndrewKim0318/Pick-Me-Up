@@ -220,8 +220,6 @@ font-weight: bold;
 }
 
 .reveal-if-active {
-  opacity: 0;
-  max-height: 0;
   overflow: hidden;
   font-size: 16px;
   transform: scale(0.8);
@@ -255,8 +253,6 @@ input[type="radio"]:checked {
   font-size: 16px;
 }
 .reveal-when-credit {
-  opacity: 0;
-  max-height: 0;
   overflow: hidden;
 }
 
