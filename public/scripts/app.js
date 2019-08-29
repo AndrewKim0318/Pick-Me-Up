@@ -74,11 +74,13 @@ const calculateTotalCost = function (price, operator) {
 
 };
 
-const dataSerializationImitator = function(foodItems, totalCost) {
+const dataSerializationImitator = function(foodItems, totalCost, name, phoneNumber) {
   //food_item name food_item quantity total cost
   let foodItemNameString = "";
   let foodItemQuantityString = "";
-  let totalCostString = `&totalCost=${totalCost}`
+  let totalCostString = `&totalCost=${totalCost}`;
+  let userNameString = `&name=${name}`;
+  let userPhoneNumber = `&phoneNumber=${phoneNumber}`;
   let dataString = "";
 
   foodItems.each(e=> {
@@ -97,7 +99,7 @@ const dataSerializationImitator = function(foodItems, totalCost) {
       foodItemQuantityString += `+${foodItemQuantity}`;
     }
 
-    dataString = foodItemNameString + foodItemQuantityString + totalCostString;
+    dataString = foodItemNameString + foodItemQuantityString + totalCostString + userNameString + userPhoneNumber;
   });
 
   console.log(dataString);
@@ -299,15 +301,18 @@ $(() => {
   $orderButton.click(function(event) {
     event.preventDefault();
 
-    console.log(this);
     let $tbody = $(this).parent().parent().children(".checkout-container").children("tbody");
     let $orderedItems = $tbody.children(".checkout-item");
     let $totalCost = $tbody.children("tr").children(".chk-out-total").text().replace("Total: $", "");
+    let $name = $(this).parent().children(".form-rows").children("#input-name").val();
+    let $number = $(this).parent().children(".form-rows").children("#input-number").val();
 
+    console.log($name);
+    console.log($number);
     //For ajax request;
     const url = "/pay";
     const method = "POST";
-    const dataString = dataSerializationImitator($orderedItems, $totalCost);
+    const dataString = dataSerializationImitator($orderedItems, $totalCost, $name, $number);
 
     $.ajax({
       url: url,
@@ -318,7 +323,7 @@ $(() => {
     $.ajax({
       url: "/sms",
       method: "POST",
-      data: "data"
+      data: dataString
     });
 
   });
