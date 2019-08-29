@@ -20,6 +20,7 @@
   line-height: 1.5;
   padding: 1.5em;
   font-family: 'Raleway', sans-serif;
+  align-items: center;
 }
 
 .nav-profile-btn {
@@ -40,15 +41,18 @@
   font-size: 16px;
   font-family: 'Raleway', sans-serif;
   color: #4056A1;
-
 }
 
+.hello-logout {
+  display: flex;
+}
 .logout-btn:hover {
   cursor: pointer;
 }
 .nav-test {
   display: flex;
   font-family: 'Raleway', sans-serif;
+  align-items: center;
 }
 
 .nav-profile {
@@ -59,3 +63,4 @@
 .nav-button {
   text-decoration: none;
 }
+
