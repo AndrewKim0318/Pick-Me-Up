@@ -72,7 +72,9 @@ module.exports = (db) => {
               } else {
                 orderItemArray.push(foodItemName);
               }
-              
+              console.log(formatDateArray);
+              console.log(totalCostArray);
+              console.log(orderArray);
           }) 
           } else {
             db.query(foodItemQueryString, foodItemQueryParams)
@@ -96,7 +98,10 @@ module.exports = (db) => {
                 costArray: totalCostArray,
                 itemArray: orderArray
               }
-
+              console.log("before rendering");
+              console.log(formatDateArray);
+              console.log(totalCostArray);
+              console.log(orderArray);
               res.render('profile', templateVars);
             });
           }
