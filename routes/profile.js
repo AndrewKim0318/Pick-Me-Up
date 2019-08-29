@@ -4,11 +4,11 @@ const bcrypt  = require("bcrypt");
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-   
-    let orderDateArray = [];
-    let totalCostArray = [];
     let orderArray = [];
     let orderItemArray = [];
+    let orderDateArray = [];
+    let totalCostArray = [];
+    let formatDateArray =[];
 
     const id = req.session.userId;
 
@@ -42,12 +42,11 @@ module.exports = (db) => {
         return null;
       })
       .then(orderHistory => {
-
-
         if(orderHistory){
         for (let i = 0; i< orderHistory.length; i++) {
           
           let orderDate = JSON.stringify(orderHistory[i]["order_date"]);
+          let formattedDate = orderDate.replace(/(['"])/g,'').slice(0, 10);
           
           let foodItemQueryString = `
             SELECT item_name
@@ -64,6 +63,7 @@ module.exports = (db) => {
   
               if (!orderDateArray.includes(orderDate)) {
                 orderDateArray.push(orderDate);
+                formatDateArray.push(formattedDate);
                 totalCostArray.push(orderHistory[i]["total_cost"]);
                 orderItemArray = [];
                 orderArray.push(orderItemArray);
@@ -77,6 +77,9 @@ module.exports = (db) => {
                 costArray: totalCostArray,
                 itemArray: orderArray
               }
+              console.log(orderItemArray);
+              console.log(totalCostArray);
+              console.log(orderArray);
               res.render('profile', templateVars);
           }) 
           } else {
@@ -87,6 +90,7 @@ module.exports = (db) => {
   
               if (!orderDateArray.includes(orderDate)) {
                 orderDateArray.push(orderDate);
+                formatDateArray.push(formattedDate);
                 totalCostArray.push(orderHistory[i]["total_cost"]);
                 orderItemArray = [];
                 orderArray.push(orderItemArray);

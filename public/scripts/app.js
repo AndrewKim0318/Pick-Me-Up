@@ -176,22 +176,22 @@ $(() => {
   switchDisplay("pastries");
   $paymentContainer.hide();
 
-  $.ajax({
-    url: "/items",
-    method: "GET"
-  })
-  .then(foodItems =>{
-    for (let foodItem of foodItems) {
-      console.log(foodItem["item_name"]);
-      let foodName = foodItem["item_name"];
-      let option =$(`
-        <option value="${foodName}">${foodName}</option>
-      `);
-      console.log(option);
-      $("#food-names").append(option);
-    }
-    return foodItems;
-  });
+  // $.ajax({
+  //   url: "/items",
+  //   method: "GET"
+  // })
+  // .then(foodItems =>{
+  //   for (let foodItem of foodItems) {
+  //     console.log(foodItem["item_name"]);
+  //     let foodName = foodItem["item_name"];
+  //     let option =$(`
+  //       <option value="${foodName}">${foodName}</option>
+  //     `);
+  //     console.log(option);
+  //     $("#food-names").append(option);
+  //   }
+  //   return foodItems;
+  // });
 
   $searchIcon.click(function(event) {
     event.preventDefault();
