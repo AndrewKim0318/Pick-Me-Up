@@ -1,7 +1,7 @@
 .profile-container {
   display: grid;
   grid-template-rows: 50px repeat(2, 1fr);
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .profile-navbar {
@@ -14,21 +14,40 @@
 }
 
 .edit-profile-container {
-  grid-row: 2;
-  grid-column: 2;
+  grid-row: 3;
+  grid-column: 1;
   padding: 1em;
+  justify-self: center;
 }
 
 .order-history {
   grid-row:3;
   grid-column: 2;
   padding: 1em;
+  justify-self: center;
+  width: 600px;
 }
 
+.user-history {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+}
 .profile-btn {
+  grid-row: 1;
+  grid-column: 1;
+  justify-self: end;
   text-decoration: none;
   padding: 1em;
   letter-spacing: 2px;
+}
+
+.order-btn {
+  grid-row: 1;
+  grid-column: 2;
+  text-decoration: none;
+  padding: 1em;
+  letter-spacing: 4px;
 }
 
 .order-header {
@@ -44,6 +63,7 @@
 
 .order-list {
   grid-column: 2;
+  flex-wrap: wrap;
 }
 
 .order-cost {
@@ -72,11 +92,12 @@
 .edit-button {
   padding: 1em;
   grid-row: 3;
+  outline: 0;
+  border: none;
 }
 
 .edit-label {
   grid-column: 1;
-  justify-self: end;
   align-self: center;
   padding-right: 1em;
 }

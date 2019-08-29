@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>User Profile</title>
-
+  <link rel="stylesheet" href="/styles/footer.css">
   <link rel="stylesheet" href="/styles/profile.css">
   <link rel="stylesheet" href="/styles/nav_bar.css">
   <link rel="stylesheet" href="/styles/layout.css">
@@ -16,10 +16,8 @@
   <% include partials/_navbar.ejs %>
 
   <main class="profile-container">
-    <div class="profile-navbar">
       <a href="#" type="submit" class="profile-btn">Edit Profile</a>
-      <a href="#" type="submit" class="profile-btn">Order History</a>
-    </div>
+      <a href="#" type="submit" class="order-btn">Order History</a>
 
     <section class="edit-profile-container">
       <form action="/profile/edit" method="POST" class="edit-form">
@@ -55,9 +53,10 @@
     <section class="order-history-container"></section>
     </section>
   </main>
-
+  <% include partials/_footer.ejs %>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
   <script src="../public/scripts/app.js"></script>
+
 </body>
 
 </html>

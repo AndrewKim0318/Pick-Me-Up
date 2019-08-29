@@ -232,6 +232,8 @@ input[type="radio"]:checked {
   border-bottom: 1px solid;
   width: 50%;
   letter-spacing: 4px;
+  outline: 0;
+  font-size: 16px;
 }
 
 #input-number {
@@ -239,6 +241,8 @@ input[type="radio"]:checked {
   border-bottom: 1px solid;
   width: 50%;
   letter-spacing: 4px;
+  outline: 0;
+  font-size: 16px;
 }
 .reveal-when-credit {
   opacity: 0;
@@ -263,6 +267,9 @@ input[type="radio"]:checked {
   letter-spacing: 4px;
   outline: 0;
 }
+.order-btn:hover {
+  border: 3px solid #c5cbe3;
+}
 
 .back-to-checkout-btn {
   border: none;
@@ -270,6 +277,9 @@ input[type="radio"]:checked {
   font-family: 'Raleway', sans-serif;
   letter-spacing: 4px;
   outline: 0;
+}
+.back-to-checkout-btn:hover {
+  border: 3px solid #c5cbe3;
 }
 
 .submit-form-label {
