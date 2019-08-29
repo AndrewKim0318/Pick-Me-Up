@@ -292,12 +292,8 @@ $(() => {
 
   $checkoutButton.click(function(event) {
     event.preventDefault();
-    $checkoutItemContainer.slideToggle("complete", function() {
-      $checkoutItemContainer.hide();
-    })
-    $paymentContainer.slideToggle("complete", function() {
-      $paymentContainer.focus();
-    })
+    $checkoutItemContainer.animate({height: "toggle"});
+    $paymentContainer.animate({height: "toggle"});
   });
 
   $orderButton.click(function(event) {
