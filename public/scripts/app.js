@@ -74,6 +74,16 @@ const calculateTotalCost = function (price, operator) {
 
 };
 
+const createNoItemAlert = function() {
+  let alert = $(`
+  <div class="no-item-alert">
+    You should add an item before you checkout!
+  </div>
+  `)
+  $checkoutItemContainer.prepend(alert);
+  return $checkoutItemContainer;
+}
+
 const dataSerializationImitator = function(foodItems, totalCost, name, phoneNumber) {
   //food_item name food_item quantity total cost
   let foodItemNameString = "";
@@ -294,8 +304,18 @@ $(() => {
 
   $checkoutButton.click(function(event) {
     event.preventDefault();
-    $checkoutItemContainer.animate({height: "toggle"});
-    $paymentContainer.animate({height: "toggle"});
+
+    if($checkoutItemContainer.children("tbody").children(".checkout-item").length){
+      $checkoutItemContainer.animate({height: "toggle"});
+      $paymentContainer.animate({height: "toggle"});
+    } else {
+      $checkoutItemContainer.addClass("no-item");
+      createNoItemAlert();
+      setTimeout(function() {
+        $checkoutItemContainer.removeClass("no-item");
+        $(".no-item-alert").remove();
+      }, 2000);
+    }
   });
 
   $orderButton.click(function(event) {

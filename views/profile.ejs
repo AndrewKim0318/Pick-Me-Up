@@ -25,11 +25,11 @@
       <form action="/profile/edit" method="POST" class="edit-form">
         <div class="edit-phone-container">
           <label for="phoneNumber" class="edit-label">Phone Number:</label>
-          <input id="editPhoneNumber" type="text" class="edit-input" name="phoneNumber" placeholder="<%= data[0]["phone_number"] %>">
+          <input id="editPhoneNumber" type="text" class="edit-input" name="phoneNumber" value="<%= data[0]["phone_number"] %>">
         </div>
         <div class="edit-password-container">
           <label for="password" class="edit-label">Password:</label>
-          <input id="editPassword" type="text" class="edit-input" name="password" placeholder="<%= data[0]["password"] %>">
+          <input id="editPassword" type="text" class="edit-input" name="password" placeholder="new password">
         </div>
         <button type="submit" class="edit-button">Save</button>
       </form>

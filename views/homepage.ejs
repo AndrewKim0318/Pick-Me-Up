@@ -57,14 +57,27 @@
       <table class="checkout-container">
         <div class="checkout-container-submit-form">
           <form class="submit-form" action="/pay" method="POST">
-            <div class="form-rows">
-                <label class="submit-form-label" for="name">Name</label>
-                <input type="text" id="input-name" name="name" placeholder="Name...">
-            </div><br>
-            <div class="form-rows">
-                <label class="submit-form-label" for="phone">Phone Number</label>
-                <input type="text" id="input-number" name="number" placeholder="Phone Number...">
-            </div><br>
+            <% if (data.length){ %>
+              <% if (data[0]["name"]) { %>
+                <div class="form-rows">
+                    <label class="submit-form-label" for="name">Name</label>
+                    <input type="text" id="input-name" name="name" value="<%= data[0]["name"]%>" required>
+                </div><br>
+                <div class="form-rows">
+                    <label class="submit-form-label" for="phone">Phone Number</label>
+                    <input type="text" id="input-number" name="number" value="<%=data[0]["phone_number"]%>" required>
+                </div><br>
+              <% } else { %>
+                <div class="form-rows">
+                  <label class="submit-form-label" for="name">Name</label>
+                  <input type="text" id="input-name" name="name" placeholder="Name..." required>
+                </div><br>
+                <div class="form-rows">
+                    <label class="submit-form-label" for="phone">Phone Number</label>
+                    <input type="text" id="input-number" name="number" placeholder="Phone Number..." required>
+                </div><br>
+              <% } %>
+            <% } %>
                 <label class="submit-form-label" for="payment">Payment Method</label><br>
             <div class="form-rows" id="payment-methods">
                 <label class="submit-form-label" for="payment-method-person">In Person</label>
