@@ -89,11 +89,8 @@ module.exports = (db) => {
             res.render('registration', templateVars);
           }
         });
-        
-
       }
     })
-
   });
   return router;
 };

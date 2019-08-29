@@ -327,9 +327,6 @@ $(() => {
     let $name = $(this).parent().children(".form-rows").children("#input-name").val();
     let $number = $(this).parent().children(".form-rows").children("#input-number").val();
 
-    console.log($name);
-    console.log($number);
-    //For ajax request;
     const url = "/pay";
     const method = "POST";
     const dataString = dataSerializationImitator($orderedItems, $totalCost, $name, $number);
@@ -358,6 +355,14 @@ $(() => {
       url: url,
       method: method,
       data: data
-    })
+    });
+
+  });
+
+  $(".registration-input").keyup(function() {
+    if($(this).siblings(".error-message")) {
+      $(this).removeClass("error");
+      $(".error-message").remove();
+    }
   })
 });
