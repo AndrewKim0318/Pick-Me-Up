@@ -10,7 +10,7 @@
 
 .log-in-form {
   z-index: 1;
-  display: block;
+  display: grid;
   position: relative;
   margin-top: 150px;
   margin-bottom: auto;
@@ -23,13 +23,16 @@
   padding: 25px;
 }
 
+.log-in-form:hover {
+  box-shadow: 10px 10px #d1dfd5;
+}
 
 .log-in-title {
   display: flex;
   text-align: center;
+  justify-content: center;
   color: grey;
   font-weight: 300;
-  padding-left: 16px;
   margin-bottom: 30px;
 }
 
@@ -46,12 +49,15 @@
 .log-in-submit-button {
   border: none;
   display: flex;
+  justify-content: center;
   background: transparent;
   color: black;
-  margin-left: 90px;
   padding: 15px;
   letter-spacing: 4px;
-
+  outline: 0;
+}
+.log-in-submit-button:hover {
+border: 2px solid #d1dfd5;
 }
 
 .log-in-label {
@@ -65,6 +71,8 @@
   border: none;
   background: transparent;
   border-bottom: 2px solid #d79922;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   align-items: center;
+  outline: none;
+  font-size: 15px;
 }
