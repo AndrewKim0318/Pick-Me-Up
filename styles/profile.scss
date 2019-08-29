@@ -1,6 +1,6 @@
 .profile-container {
   display: grid;
-  grid-template-rows: 50px repeat(2, 1fr);
+  grid-template-rows: 50px repeat(1, 1fr);
   grid-template-columns: repeat(2, 1fr);
   font-family: 'Raleway', sans-serif;
 }
@@ -26,7 +26,6 @@
   grid-column: 2;
   padding: 1em;
   justify-self: center;
-  width: 600px;
 }
 
 .user-history {
@@ -53,9 +52,12 @@
 
 .order-header {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 200px 200px 130px;
   align-items: center;
-  justify-items: center;
+  justify-items: start;
+  letter-spacing: 4px;
+  padding: 1em;
+  border: 1px solid #d79922;
 }
 
 .order-date {
@@ -69,6 +71,7 @@
 
 .order-cost {
   grid-column: 3;
+  padding: 5px;
 }
 
 .edit-form {
@@ -81,6 +84,7 @@
   grid-row: 1;
   display: grid;
   grid-template-columns: 150px 1fr;
+
 }
 
 .edit-password-container {
@@ -95,16 +99,23 @@
   grid-row: 3;
   outline: 0;
   border: none;
+  font-size: 15px;
+  letter-spacing: 4px;
 }
 
 .edit-label {
   grid-column: 1;
   align-self: center;
   padding-right: 1em;
+  letter-spacing: 1px;
 }
 
 .edit-input {
   grid-column: 2;
   height: 100%;
   align-self: center;
+  font-size: 16px;
+  border: none;
+  border-bottom: 2px solid #d79922;
+  outline: none;
 }
