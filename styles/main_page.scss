@@ -67,6 +67,7 @@ h1 {
   width: 100%;
   text-align: center;
   letter-spacing: 4px;
+  border: none;
 }
 .menu-item-btn {
   text-decoration: none;
@@ -152,6 +153,7 @@ h1 {
   width: 20%;
   padding-left: 30px;
   letter-spacing: 1px;
+  white-space: nowrap;
 }
 
 .checkout-container {
@@ -183,15 +185,16 @@ h1 {
 }
 
 .chk-out-total {
-text-align: left;
+text-align: right;
 color: grey;
 font-weight: bold;
+letter-spacing: 2px;
 }
 
 .plus-minus-btns {
   white-space: nowrap;
   width: 15%;
-  padding-left: 10px;
+  padding-left: 15px;
 }
 
 .item-count {

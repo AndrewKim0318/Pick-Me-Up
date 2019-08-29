@@ -1,41 +1,59 @@
 .registration-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  font-family: 'Raleway', sans-serif;
 }
 
 .registration-form {
   grid-column: 2;
   display: grid;
   grid-template-rows: repeat(6, 1fr);
+  margin-top: 150px;
+  letter-spacing: 4px;
+  font-weight: 300;
+  border: 2px solid #c5cbe3;
+  padding: 25px;
+}
+
+.registration-form:hover {
+  box-shadow: 10px 10px #d1dfd5;
 }
 
 .registration-title {
   grid-row: 1;
+  text-align: center;
   justify-self: center;
+  color: grey;
+  font-weight: 300;
+  margin-bottom: 30px;
 }
 
 .registration-name-container {
   grid-row: 2;
   display: grid;
   grid-template-columns: 150px 1fr;
+  border: none;
 }
 
 .registration-username-container {
   grid-row: 3;
   display: grid;
   grid-template-columns: 150px 1fr;
+  border: none;
 }
 
 .registration-phone-container {
   grid-row: 4;
   display: grid;
   grid-template-columns: 150px 1fr;
+  border: none;
 }
 
 .registration-password-container {
   grid-row: 5;
   display: grid;
   grid-template-columns: 150px 1fr;
+  border: none;
 }
 
 .registration-button {
@@ -44,15 +62,19 @@
 
 .registration-label {
   grid-column: 1;
-  justify-self: end;
   align-self: center;
   padding-right: 1em;
+  text-align: left;
 }
 
 .registration-input {
   grid-column: 2;
   height: 60%;
   align-self: center;
+  border: none;
+  border-bottom: 2px solid #d79922;
+  font-size: 15px;
+  outline: 0;
 }
 
 .error {
