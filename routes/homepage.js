@@ -164,23 +164,23 @@ module.exports = (db) => {
       const searchQueryParams = [itemName];
 
       db.query(searchQueryString, searchQueryParams)
-      .then(data => data.rows)
-      .then(foodItem => {
-        if(foodItem.length){
-          const templateVars = {
-            data:data,
-            error: true
-          }
-          res.render('homepage', templateVars);
-        } else {
-          const templateVars = {
-            data:data,
-            error: null
-          }
-          res.render('homepage', templateVars);
-        }
-      })
+      .then(data => {
+        res.send(data.rows);
+      });
+      
     });
+
+    router.get("/items", (req,res) => {
+      const itemNameQueryString = `
+        SELECT item_name
+        FROM food_items
+      `
+
+      db.query(itemNameQueryString)
+      .then(data => {
+        res.send(data.rows);
+      })
+    })
 
   });
   return router;

@@ -308,3 +308,16 @@ input[type="radio"]:checked {
   grid-column: 2;
   z-index: 11;
 }
+
+#food-names {
+  display: none;
+  text-decoration: none;
+}
+
+input::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+.no-item {
+  border: 2px solid red;
+}

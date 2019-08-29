@@ -18,6 +18,7 @@ const $checkoutButton = $(".checkout-btn");
 const $paymentContainer = $(".checkout-container-submit-form");
 const $orderButton = $(".order-btn");
 const $finalMessage = $(".final-message");
+const $searchInput = $(".search-input");
 let includedItems = [];
 let totalCost = 0;
 
@@ -134,17 +135,62 @@ const restoreDefault = function () {
   $(".chk-out-total").text(`Total: $${totalCost}`);
 };
 
-$(() => {
-
-  $finalMessage.hide();
-  $searchContainer.hide();
-  $pastry.show();
+const hideAllDisplays = function () {
+  $pastry.hide();
   $cookie.hide();
   $cake.hide();
   $pie.hide();
   $macaron.hide();
+};
+
+const switchDisplay = function(category) {
+  switch(category) {
+    case "pastries":
+      hideAllDisplays();
+      $pastry.show();
+      break;
+    case "cookies":
+      hideAllDisplays();
+      $cookie.show();
+      break;
+    case "cakes":
+      hideAllDisplays();
+      $cake.show();
+      break;
+    case "pies":
+      hideAllDisplays();
+      $pie.show();
+      break;
+    case "macarons":
+      hideAllDisplays();
+      $macaron.show();
+      break;
+  }
+};
+
+$(() => {
+
+  $finalMessage.hide();
+  $searchContainer.hide();
+  switchDisplay("pastries");
   $paymentContainer.hide();
 
+  $.ajax({
+    url: "/items",
+    method: "GET"
+  })
+  .then(foodItems =>{
+    for (let foodItem of foodItems) {
+      console.log(foodItem["item_name"]);
+      let foodName = foodItem["item_name"];
+      let option =$(`
+        <option value="${foodName}">${foodName}</option>
+      `);
+      console.log(option);
+      $("#food-names").append(option);
+    }
+    return foodItems;
+  });
 
   $searchIcon.click(function(event) {
     event.preventDefault();
@@ -162,53 +208,27 @@ $(() => {
 
   $pastryButton.click(function(event) {
     event.preventDefault();
-
-    $pastry.show();
-    $cookie.hide();
-    $cake.hide();
-    $pie.hide();
-    $macaron.hide();
-
+    switchDisplay("pastries");
   });
 
   $cookieButton.click(function(event) {
     event.preventDefault();
-
-    $pastry.hide();
-    $cookie.show();
-    $cake.hide();
-    $pie.hide();
-    $macaron.hide();
+    switchDisplay("cookies");
   });
 
   $cakeButton.click(function(event) {
     event.preventDefault();
-
-    $pastry.hide();
-    $cookie.hide();
-    $cake.show();
-    $pie.hide();
-    $macaron.hide();
+    switchDisplay("cakes");
   });
 
   $pieButton.click(function(event) {
     event.preventDefault();
-
-    $pastry.hide();
-    $cookie.hide();
-    $cake.hide();
-    $pie.show();
-    $macaron.hide();
+    switchDisplay("pies");
   });
 
   $macaronButton.click(function(event) {
     event.preventDefault();
-
-    $pastry.hide();
-    $cookie.hide();
-    $cake.hide();
-    $pie.hide();
-    $macaron.show();
+    switchDisplay("macarons");
   });
 
   $addButton.click(function(event){
@@ -402,8 +422,41 @@ $(() => {
     $paymentContainer.hide();
   });
 
-  $(".search-button").submit(function(e) {
+  $(".search-button").click(function(event) {
     event.preventDefault();
-    
-  })
+
+    const data = $(this).parent().serialize();
+    const url = "/search";
+    const method = "POST";
+
+    $.ajax({
+      url: url,
+      method: method,
+      data: data
+    })
+    .then(data => {
+      if(data.length){
+        switchDisplay(data[0]["category"]);
+        $searchContainer.hide();
+  
+        if($changingIcon[0].className === "fas fa-search"){
+          $changingIcon.removeClass("fa-search");
+          $changingIcon.addClass("fa-times");
+        } else {
+          $changingIcon.addClass("fa-search");
+          $changingIcon.removeClass("fa-times");
+        }
+  
+        $(".search-input").val("");
+        return data
+      } else {
+        $searchInput.addClass("no-item");
+        $searchInput.val("No such item!");
+        setTimeout(function() {
+          $searchInput.removeClass("no-item");
+          $searchInput.val("");
+        }, 1000);
+      }
+    });
+  });
 });
