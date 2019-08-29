@@ -124,7 +124,8 @@ const restoreDefault = function () {
   });
   let $checkoutItems = $checkoutItemContainer.children("tbody").children(".checkout-item");
   $checkoutItems.each(e => {
-    let nameToCheck = $($checkoutItems[e])
+    let nameToCheck = $($checkoutItems[e]).children(".chkout-item-name").text();
+    let id = nameToCheck.replace(/\s+/g, '');
     let newArray = includedItems.filter(item => item !== id);
     includedItems = newArray;
   })
