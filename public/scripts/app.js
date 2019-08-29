@@ -128,8 +128,10 @@ const restoreDefault = function () {
     let id = nameToCheck.replace(/\s+/g, '');
     let newArray = includedItems.filter(item => item !== id);
     includedItems = newArray;
+    $($checkoutItems[e]).remove();
   })
   totalCost = 0;
+  $(".chk-out-total").text(`Total: $${totalCost}`);
 };
 
 $(() => {
@@ -355,21 +357,21 @@ $(() => {
       restoreDefault();
     }, 2000)
 
-    // const url = "/pay";
-    // const method = "POST";
-    // const dataString = dataSerializationImitator($orderedItems, $totalCost, $name, $number);
+    const url = "/pay";
+    const method = "POST";
+    const dataString = dataSerializationImitator($orderedItems, $totalCost, $name, $number);
 
-    // $.ajax({
-    //   url: url,
-    //   method: method,
-    //   data: dataString,
-    // });
+    $.ajax({
+      url: url,
+      method: method,
+      data: dataString,
+    });
 
-    // $.ajax({
-    //   url: "/sms",
-    //   method: method,
-    //   data: dataString
-    // });
+    $.ajax({
+      url: "/sms",
+      method: method,
+      data: dataString
+    });
 
   });
 
@@ -398,5 +400,10 @@ $(() => {
     event.preventDefault();
     $checkoutItemContainer.show();
     $paymentContainer.hide();
+  });
+
+  $(".search-button").submit(function(e) {
+    event.preventDefault();
+    
   })
 });

@@ -66,13 +66,6 @@ app.use("/profile", profileRoutes(db));
 app.use("/", homepageRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
-//Create hardcoded db to test registration and login
-const users = {
-
-};
-
-module.exports = users;
-
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

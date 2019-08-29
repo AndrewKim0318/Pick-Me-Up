@@ -33,7 +33,8 @@ module.exports = (db) => {
       })
       .then(data => {
         const templateVars = {
-          data:data
+          data:data,
+          error: null
         }
         res.render('homepage', templateVars);
       });
@@ -53,7 +54,8 @@ module.exports = (db) => {
       })
       .then(data => {
         const templateVars = {
-          data:data
+          data:data,
+          error: null
         }
         res.render('homepage', templateVars);
       });
@@ -127,8 +129,6 @@ module.exports = (db) => {
     router.post("/sms", (req,res) => {
       let clientName = req.body.name;
       let clientNumber = req.body.phoneNumber;
-      console.log(clientName);
-      console.log(clientNumber);
 
       client.messages
       .create({
@@ -150,6 +150,36 @@ module.exports = (db) => {
         res.send();
       });
 
+    });
+
+    router.post("/search", (req,res) => {
+      const itemName = req.body.name;
+      
+      const searchQueryString = `
+        SELECT category
+        FROM food_items
+        WHERE item_name = $1;
+      `;
+
+      const searchQueryParams = [itemName];
+
+      db.query(searchQueryString, searchQueryParams)
+      .then(data => data.rows)
+      .then(foodItem => {
+        if(foodItem.length){
+          const templateVars = {
+            data:data,
+            error: true
+          }
+          res.render('homepage', templateVars);
+        } else {
+          const templateVars = {
+            data:data,
+            error: null
+          }
+          res.render('homepage', templateVars);
+        }
+      })
     });
 
   });
