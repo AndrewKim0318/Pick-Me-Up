@@ -122,7 +122,12 @@ const restoreDefault = function () {
   $foodItemContainers.each(e => {
     $($foodItemContainers[e]).children(".counter").children(".menu-item-counter").val(0);
   });
-  $checkoutItemContainer.children("tbody").children(".checkout-item").remove();
+  let $checkoutItems = $checkoutItemContainer.children("tbody").children(".checkout-item");
+  $checkoutItems.each(e => {
+    let nameToCheck = $($checkoutItems[e])
+    let newArray = includedItems.filter(item => item !== id);
+    includedItems = newArray;
+  })
   totalCost = 0;
 };
 
