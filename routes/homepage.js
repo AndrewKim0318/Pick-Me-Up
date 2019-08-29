@@ -140,15 +140,15 @@ module.exports = (db) => {
         res.send();
       });
 
-      // client.messages
-      // .create({
-      //   from: '+12267991117',
-      //   body: `${clientName} has placed an order. Get to work! Client phone number is: ${clientNumber}`,
-      //   to: process.env.RESTAURANT
-      // })
-      // .then(message => {
-      //   res.send();
-      // });
+      client.messages
+      .create({
+        from: '+12267991117',
+        body: `${clientName} has placed an order. Get to work! Client phone number is: ${clientNumber}`,
+        to: process.env.RESTAURANT
+      })
+      .then(message => {
+        res.send();
+      });
 
     });
 
