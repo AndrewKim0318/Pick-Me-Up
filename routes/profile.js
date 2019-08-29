@@ -43,8 +43,9 @@ module.exports = (db) => {
       })
       .then(orderHistory => {
         if(orderHistory){
-        for (let i = 0; i< orderHistory.length; i++) {
-          
+
+        for ( let i= 0 ; i< orderHistory.length; i++) {
+
           let orderDate = JSON.stringify(orderHistory[i]["order_date"]);
           let formattedDate = orderDate.replace(/(['"])/g,'').slice(0, 10);
           
@@ -55,7 +56,7 @@ module.exports = (db) => {
           `
           let foodItemId = orderHistory[i]["food_item_id"];
           let foodItemQueryParams = [foodItemId];
-          if (i === (orderHistory.length - 1)){
+          if (i < (orderHistory.length - 1)){
             db.query(foodItemQueryString, foodItemQueryParams)
             .then(data => data.rows[0])
             .then(foodName => {
@@ -71,16 +72,9 @@ module.exports = (db) => {
               } else {
                 orderItemArray.push(foodItemName);
               }
-              const templateVars = {
-                data: user,
-                dateArray: orderDateArray,
-                costArray: totalCostArray,
-                itemArray: orderArray
-              }
-              console.log(orderItemArray);
+              console.log(formatDateArray);
               console.log(totalCostArray);
               console.log(orderArray);
-              res.render('profile', templateVars);
           }) 
           } else {
             db.query(foodItemQueryString, foodItemQueryParams)
@@ -98,18 +92,21 @@ module.exports = (db) => {
               } else {
                 orderItemArray.push(foodItemName);
               }
+              const templateVars = {
+                data: user,
+                dateArray: formatDateArray,
+                costArray: totalCostArray,
+                itemArray: orderArray
+              }
+              console.log("before rendering");
+              console.log(formatDateArray);
+              console.log(totalCostArray);
+              console.log(orderArray);
+              res.render('profile', templateVars);
             });
           }
         }
-      } else {
-        const templateVars = {
-          data: user,
-          dateArray: orderDateArray,
-          costArray: totalCostArray,
-          itemArray: orderArray
-        }
-        res.render('profile', templateVars);
-      }
+      } 
     })
   });
 
