@@ -17,6 +17,7 @@ const $checkoutItemContainer = $(".checkout-container");
 const $checkoutButton = $(".checkout-btn");
 const $paymentContainer = $(".checkout-container-submit-form");
 const $orderButton = $(".order-btn");
+const $finalMessage = $(".final-message");
 let includedItems = [];
 let totalCost = 0;
 
@@ -118,6 +119,7 @@ const dataSerializationImitator = function(foodItems, totalCost, name, phoneNumb
 
 $(() => {
 
+  $finalMessage.hide();
   $searchContainer.hide();
   $pastry.show();
   $cookie.hide();
@@ -306,8 +308,10 @@ $(() => {
     event.preventDefault();
 
     if($checkoutItemContainer.children("tbody").children(".checkout-item").length){
-      $checkoutItemContainer.animate({height: "toggle"});
-      $paymentContainer.animate({height: "toggle"});
+      $checkoutItemContainer.slideUp();
+      $paymentContainer.slideToggle();
+      // $checkoutItemContainer.animate({width: "toggle"});
+      // $paymentContainer.animate({width: "toggle"});
     } else {
       $checkoutItemContainer.addClass("no-item");
       createNoItemAlert();
@@ -327,21 +331,26 @@ $(() => {
     let $name = $(this).parent().children(".form-rows").children("#input-name").val();
     let $number = $(this).parent().children(".form-rows").children("#input-number").val();
 
-    const url = "/pay";
-    const method = "POST";
-    const dataString = dataSerializationImitator($orderedItems, $totalCost, $name, $number);
+    $finalMessage.show();
+    $paymentContainer.style.opacity = "0";
 
-    $.ajax({
-      url: url,
-      method: method,
-      data: dataString,
-    });
 
-    $.ajax({
-      url: "/sms",
-      method: method,
-      data: dataString
-    });
+
+    // const url = "/pay";
+    // const method = "POST";
+    // const dataString = dataSerializationImitator($orderedItems, $totalCost, $name, $number);
+
+    // $.ajax({
+    //   url: url,
+    //   method: method,
+    //   data: dataString,
+    // });
+
+    // $.ajax({
+    //   url: "/sms",
+    //   method: method,
+    //   data: dataString
+    // });
 
   });
 
@@ -364,5 +373,11 @@ $(() => {
       $(this).removeClass("error");
       $(".error-message").remove();
     }
+  });
+
+  $(".back-to-checkout-btn").click(function() {
+    event.preventDefault();
+    $checkoutItemContainer.slideToggle();
+    $paymentContainer.slideUp();
   })
 });
