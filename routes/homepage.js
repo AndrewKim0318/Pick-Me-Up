@@ -136,7 +136,6 @@ module.exports = (db) => {
       .then(message => {
         console.log(message.sid)
         console.log("in message");
-        res.send();
       });
 
       client.messages

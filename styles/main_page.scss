@@ -45,6 +45,7 @@ h1 {
 .search-icon {
   border: none;
   background: transparent;
+  outline: 0;
 }
 
 .search-container {
@@ -223,6 +224,7 @@ input[type="radio"]:checked {
   padding: 10px 20px;
   transform: scale(1);
   overflow: visible;
+  outline: 0;
 }
 
 #input-name {
@@ -259,6 +261,7 @@ input[type="radio"]:checked {
   padding: 10px;
   font-family: 'Raleway', sans-serif;
   letter-spacing: 4px;
+  outline: 0;
 }
 
 .back-to-checkout-btn {
@@ -266,6 +269,7 @@ input[type="radio"]:checked {
   padding: 10px;
   font-family: 'Raleway', sans-serif;
   letter-spacing: 4px;
+  outline: 0;
 }
 
 .submit-form-label {
