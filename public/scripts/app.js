@@ -74,11 +74,23 @@ const calculateTotalCost = function (price, operator) {
 
 };
 
-const dataSerializationImitator = function(foodItems, totalCost) {
+const createNoItemAlert = function() {
+  let alert = $(`
+  <div class="no-item-alert">
+    You should add an item before you checkout!
+  </div>
+  `)
+  $checkoutItemContainer.prepend(alert);
+  return $checkoutItemContainer;
+}
+
+const dataSerializationImitator = function(foodItems, totalCost, name, phoneNumber) {
   //food_item name food_item quantity total cost
   let foodItemNameString = "";
   let foodItemQuantityString = "";
-  let totalCostString = `&totalCost=${totalCost}`
+  let totalCostString = `&totalCost=${totalCost}`;
+  let userNameString = `&name=${name}`;
+  let userPhoneNumber = `&phoneNumber=${phoneNumber}`;
   let dataString = "";
 
   foodItems.each(e=> {
@@ -97,7 +109,7 @@ const dataSerializationImitator = function(foodItems, totalCost) {
       foodItemQuantityString += `+${foodItemQuantity}`;
     }
 
-    dataString = foodItemNameString + foodItemQuantityString + totalCostString;
+    dataString = foodItemNameString + foodItemQuantityString + totalCostString + userNameString + userPhoneNumber;
   });
 
   console.log(dataString);
@@ -292,22 +304,35 @@ $(() => {
 
   $checkoutButton.click(function(event) {
     event.preventDefault();
-    $checkoutItemContainer.animate({height: "toggle"});
-    $paymentContainer.animate({height: "toggle"});
+
+    if($checkoutItemContainer.children("tbody").children(".checkout-item").length){
+      $checkoutItemContainer.animate({height: "toggle"});
+      $paymentContainer.animate({height: "toggle"});
+    } else {
+      $checkoutItemContainer.addClass("no-item");
+      createNoItemAlert();
+      setTimeout(function() {
+        $checkoutItemContainer.removeClass("no-item");
+        $(".no-item-alert").remove();
+      }, 2000);
+    }
   });
 
   $orderButton.click(function(event) {
     event.preventDefault();
 
-    console.log(this);
     let $tbody = $(this).parent().parent().children(".checkout-container").children("tbody");
     let $orderedItems = $tbody.children(".checkout-item");
     let $totalCost = $tbody.children("tr").children(".chk-out-total").text().replace("Total: $", "");
+    let $name = $(this).parent().children(".form-rows").children("#input-name").val();
+    let $number = $(this).parent().children(".form-rows").children("#input-number").val();
 
+    console.log($name);
+    console.log($number);
     //For ajax request;
     const url = "/pay";
     const method = "POST";
-    const dataString = dataSerializationImitator($orderedItems, $totalCost);
+    const dataString = dataSerializationImitator($orderedItems, $totalCost, $name, $number);
 
     $.ajax({
       url: url,
@@ -317,9 +342,22 @@ $(() => {
 
     $.ajax({
       url: "/sms",
-      method: "POST",
-      data: "data"
+      method: method,
+      data: dataString
     });
 
   });
+
+  $(".registration-button").submit(function(event){
+    event.preventDefault();
+    const data = $(this).parent().serialize();
+    const url = "/registration";
+    const method = "POST";
+
+    $.ajax({
+      url: url,
+      method: method,
+      data: data
+    })
+  })
 });

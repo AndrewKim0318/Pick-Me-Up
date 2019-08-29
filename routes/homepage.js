@@ -125,46 +125,33 @@ module.exports = (db) => {
     });
 
     router.post("/sms", (req,res) => {
-      console.log(process.env.CLIENT);
-      console.log(process.env.RESTAURANT);
+      let clientName = req.body.name;
+      let clientNumber = req.body.phoneNumber;
+      console.log(clientName);
+      console.log(clientNumber);
+
       client.messages
       .create({
         from: '+12267991117',
-        body: 'client',
+        body: `Hey ${clientName}, come pick up your order in 30 minutes!`,
         to: process.env.CLIENT
       })
       .then(message => {
-        console.log(message.sid)
-        console.log("in message");
-      });
-
-      client.messages
-      .create({
-        from: '+12267991117',
-        body: 'restaurant',
-        to: process.env.RESTAURANT
-      })
-      .then(message => {
-        console.log(message.sid)
-        console.log("restaurant");
         res.send();
       });
 
+      // client.messages
+      // .create({
+      //   from: '+12267991117',
+      //   body: `${clientName} has placed an order. Get to work! Client phone number is: ${clientNumber}`,
+      //   to: process.env.RESTAURANT
+      // })
+      // .then(message => {
+      //   res.send();
+      // });
+
     });
 
-    // router.post("/restaurant", (req, res) => {
-    //   client.messages
-    //   .create({
-    //     from: '+12267991117',
-    //     body: 'restaurant',
-    //     to: process.env.RESTAURANT
-    //   })
-    //   .then(message => {
-    //     console.log(message.sid)
-    //     console.log("restaurant");
-    //     res.send();
-    //   });
-    // })
   });
   return router;
 }
