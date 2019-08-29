@@ -129,24 +129,20 @@ module.exports = (db) => {
       client.messages
       .create({
         from: '+12267991117',
-        body: 'client',
+        body: 'testing for amanda',
         to: process.env.CLIENT
       })
       .then(message => {
-        console.log(message.sid)
-        console.log("in message");
         res.send();
       });
       
       client.messages
       .create({
         from: '+12267991117',
-        body: 'restaurant',
+        body: 'testing again',
         to: process.env.RESTAURANT
       })
       .then(message => {
-        console.log(message.sid)
-        console.log("restaurant");
         res.send();
       });
   
