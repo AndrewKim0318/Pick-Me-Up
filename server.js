@@ -1,12 +1,16 @@
 // load .env data into process.env
 require('dotenv').config();
 
+const accountSid = process.env.ACCOUNT_SID;
+const authToken = process.env.ACCOUNT_TOKEN;
+const client = require('twilio')(accountSid, authToken);
+
+
 // Web server config
 const PORT       = process.env.PORT || 8080;
 const ENV        = process.env.ENV || "development";
 const express    = require("express");
 const bodyParser = require("body-parser");
-const bcrypt     = require("bcrypt");
 const sass       = require("node-sass-middleware");
 const app        = express();
 const cookieSession = require('cookie-session');

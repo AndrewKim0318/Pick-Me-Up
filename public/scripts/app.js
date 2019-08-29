@@ -314,5 +314,17 @@ $(() => {
       method: method,
       data: dataString,
     });
+
+    $.ajax({
+      url: "/sms",
+      method: "POST",
+      data: "data"
+    })
+
+    $.ajaxSettings({
+      url: "/restaurant",
+      method: "POST",
+      data: "data"
+    })
   });
 });

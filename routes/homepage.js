@@ -1,7 +1,13 @@
+require('dotenv').config();
+
+const http = require("http");
 const express = require('express');
 const router  = express.Router();
 const bcrypt  = require("bcrypt");
-
+const accountSid = process.env.ACCOUNT_SID;
+const authToken = process.env.ACCOUNT_TOKEN;
+const client = require('twilio')(accountSid, authToken);
+const MessagingResponse = require('twilio').twiml.MessagingResponse;
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
@@ -116,8 +122,49 @@ module.exports = (db) => {
           }
         })
       }
-    })
 
+    });
+
+    router.post("/sms", (req,res) => {
+      client.messages
+      .create({
+        from: '+12267991117',
+        body: 'client',
+        to: process.env.CLIENT
+      })
+      .then(message => {
+        console.log(message.sid)
+        console.log("in message");
+        res.send();
+      });
+      
+      client.messages
+      .create({
+        from: '+12267991117',
+        body: 'restaurant',
+        to: process.env.RESTAURANT
+      })
+      .then(message => {
+        console.log(message.sid)
+        console.log("restaurant");
+        res.send();
+      });
+  
+    });
+
+    // router.post("/restaurant", (req, res) => {
+    //   client.messages
+    //   .create({
+    //     from: '+12267991117',
+    //     body: 'restaurant',
+    //     to: process.env.RESTAURANT
+    //   })
+    //   .then(message => {
+    //     console.log(message.sid)
+    //     console.log("restaurant");
+    //     res.send();
+    //   });
+    // })
   });
   return router;
 }
