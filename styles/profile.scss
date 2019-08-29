@@ -3,6 +3,7 @@
   grid-template-rows: 50px repeat(1, 1fr);
   grid-template-columns: repeat(2, 1fr);
   font-family: 'Raleway', sans-serif;
+  padding-top: 2em;
 }
 
 .profile-navbar {
@@ -19,6 +20,7 @@
   grid-column: 1;
   padding: 1em;
   justify-self: center;
+
 }
 
 .order-history {
@@ -29,17 +31,29 @@
 }
 
 .user-history {
-  display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
 }
+
+.individual-user {
+  display: grid;
+  grid-template-columns: 200px 200px 130px;
+  padding: 1em;
+  border-bottom: 1px solid #c5cbe3;
+  align-items: center;
+}
+
 .profile-btn {
   grid-row: 1;
   grid-column: 1;
   justify-self: end;
   text-decoration: none;
   padding: 1em;
-  letter-spacing: 2px;
+  letter-spacing: 4px;
+  color: white;
+  font-weight: bold;
+  border-style: double;
+  background: #d1dfd5
 }
 
 .order-btn {
@@ -48,6 +62,12 @@
   text-decoration: none;
   padding: 1em;
   letter-spacing: 4px;
+  justify-self: start;
+  letter-spacing: 4px;
+  color: white;
+  font-weight: bold;
+  border-style: double;
+  background: #d1dfd5;
 }
 
 .order-header {
@@ -57,7 +77,8 @@
   justify-items: start;
   letter-spacing: 4px;
   padding: 1em;
-  border: 1px solid #d79922;
+  border-bottom: 1px solid #d79922;
+  border-top: 1px solid #c5cbe3;
 }
 
 .order-date {
@@ -66,7 +87,7 @@
 
 .order-list {
   grid-column: 2;
-  flex-wrap: wrap;
+  overflow-wrap: break-word;
 }
 
 .order-cost {
@@ -84,6 +105,7 @@
   grid-row: 1;
   display: grid;
   grid-template-columns: 150px 1fr;
+  border-top: 1px solid #c5cbe3;
 
 }
 
@@ -101,6 +123,15 @@
   border: none;
   font-size: 15px;
   letter-spacing: 4px;
+  border-bottom: 1px solid #c5cbe3;
+}
+
+.edit-button:hover {
+  border: 2px solid #c5cbe3;
+  color: #c5cbe3;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.15s ease .15s;
 }
 
 .edit-label {

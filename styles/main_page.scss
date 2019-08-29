@@ -81,7 +81,7 @@ h1 {
 }
 
 .menu-item-btn:hover {
-  border-bottom: 2px solid #4056A1;
+  border-bottom: 2px solid #aab6fb;
 }
 .menu-container {
   display: grid;
@@ -109,7 +109,7 @@ h1 {
 .menu-item-counter {
   text-align: center;
   font-weight: bold;
-  width: 25px;
+  width: 50px;
   border: none;
   font-size: medium;
 }
@@ -118,8 +118,8 @@ h1 {
   table-layout: fixed;
   align-items: center;
   grid-column: 1;
-  border: 2px solid #d79922;
-  border-radius: 20px;
+  border: 3px solid #d1dfd5;
+  border-radius: 15px;
   margin: 30px;
   padding-left: 15px;
   padding: 15px;
@@ -148,7 +148,7 @@ h1 {
 }
 
 .item-price {
-  width: 10%;
+  width: 20%;
   padding-left: 30px;
   letter-spacing: 1px;
 }
@@ -156,7 +156,7 @@ h1 {
 .checkout-container {
   table-layout: fixed;
   grid-column: 2;
-  border: 2px solid #4056A1;
+  border: 3px solid #aab6fb;
   border-radius: 20px;
   padding: 15px;
   margin: 15px;
@@ -183,11 +183,14 @@ h1 {
 
 .chk-out-total {
 text-align: left;
+color: grey;
+font-weight: bold;
 }
 
 .plus-minus-btns {
   white-space: nowrap;
   width: 15%;
+  padding-left: 10px;
 }
 
 .item-count {
@@ -196,7 +199,8 @@ text-align: left;
 }
 .checkout-btn {
   text-align: center;
-  border: 3px solid #d79922;
+  border-style: double;
+  border: 2px solid #d79922;
   border-radius: 15px;
   color: #d79922;
 }
@@ -206,7 +210,7 @@ text-align: left;
   z-index: 10;
   display: inline-grid;
   grid-column: 2;
-  border: 2px solid #4056A1;
+  border: 2px solid #aab6fb;
   border-radius: 20px;
   padding: 15px;
   margin: 15px;
@@ -235,7 +239,7 @@ input[type="radio"]:checked {
 
 #input-name {
   border: none;
-  border-bottom: 1px solid;
+  border-bottom: 1px solid #d79922;;
   width: 50%;
   letter-spacing: 4px;
   outline: 0;
@@ -244,7 +248,7 @@ input[type="radio"]:checked {
 
 #input-number {
   border: none;
-  border-bottom: 1px solid;
+  border-bottom: 1px solid #d79922;;
   width: 50%;
   letter-spacing: 4px;
   outline: 0;
@@ -262,7 +266,7 @@ input[type="radio"]:checked {
 }
 
 #payment-methods {
-  border: 1px solid #c5cbe3;
+  border: 1px solid #d79922;
   padding: 10px;
 }
 
