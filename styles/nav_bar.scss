@@ -1,13 +1,12 @@
 .nav-bar-wrapper {
   position: fixed;
   width: 100%;
-  z-index: 1;
+  z-index: 20;
   background-color: white;
   top: 0;
   margin: 0 auto;
   font-family: 'Raleway', sans-serif;
   border-bottom: 1px solid #c5cbe3;
-
 }
 
 .nav-button {
@@ -45,6 +44,7 @@
 
 .hello-logout {
   display: flex;
+  margin: 0;
 }
 .logout-btn:hover {
   cursor: pointer;

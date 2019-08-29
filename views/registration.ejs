@@ -18,27 +18,27 @@
       <form action="/registration" method="POST" class="registration-form">
         <h3 class="registration-title"> Register </h3>
         <div class="registration-name-container">
-          <label for="name" class="registration-label">Name:</label>
+          <label for="name" class="registration-label">Name</label>
           <input type="text" class="registration-input" name="name" required>
         </div>
         <% if(error) { %>
           <div class="registration-username-container">
-            <label for="username" class="registration-label">Username:</label>
+            <label for="username" class="registration-label">Username</label>
             <input type="text" class="registration-input error" name="username" required>
           </div>
           <div class="registration-username-container error-message">Username is already in use, choose a different username</div>
         <% } else { %>
           <div class="registration-username-container">
-            <label for="username" class="registration-label">Username:</label>
+            <label for="username" class="registration-label">Username</label>
             <input type="text" class="registration-input" name="username" required>
-          </div> 
-        <% } %>     
+          </div>
+        <% } %>
         <div class="registration-phone-container">
-          <label for="phoneNumber" class="registration-label">Phone Number:</label>
+          <label for="phoneNumber" class="registration-label">Phone Number</label>
           <input type="text" class="registration-input" name="phoneNumber" required>
         </div>
         <div class="registration-password-container">
-          <label for="password" class="registration-label">Password:</label>
+          <label for="password" class="registration-label">Password</label>
           <input type="text" class="registration-input" name="password" required>
         </div>
         <button type="submit" class="registration-button">register</button>
