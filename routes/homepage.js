@@ -7,7 +7,6 @@ const bcrypt  = require("bcrypt");
 const accountSid = process.env.ACCOUNT_SID;
 const authToken = process.env.ACCOUNT_TOKEN;
 const client = require('twilio')(accountSid, authToken);
-const MessagingResponse = require('twilio').twiml.MessagingResponse;
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
@@ -61,7 +60,7 @@ module.exports = (db) => {
     }
 
     router.post("/pay", (req, res) => {
-     
+
       const id = req.session.userId;
       let foodItems = req.body.foodItems;
       let foodItemQuantity = req.body.foodItemQuantity;
@@ -105,18 +104,18 @@ module.exports = (db) => {
               WHERE item_name = $1
             `
             let foodItemQueryParams = [foodItemArray[i]];
-  
+
             db.query(foodItemQueryString, foodItemQueryParams)
             .then(res => res.rows[0])
             .then(id => {
               let foodItemId = id["id"];
-  
+
               let checkoutItemsQueryString = `
                 INSERT INTO checkout_items(food_item_id, checkout_id, quantity)
                 VALUES ($1, $2, $3);
               `
               let checkoutItemsQueryParam = [foodItemId, checkoutId, foodItemQuantityArray[i]];
-              
+
               db.query(checkoutItemsQueryString, checkoutItemsQueryParam);
             })
           }
@@ -126,6 +125,8 @@ module.exports = (db) => {
     });
 
     router.post("/sms", (req,res) => {
+      console.log(process.env.CLIENT);
+      console.log(process.env.RESTAURANT);
       client.messages
       .create({
         from: '+12267991117',
@@ -137,7 +138,7 @@ module.exports = (db) => {
         console.log("in message");
         res.send();
       });
-      
+
       client.messages
       .create({
         from: '+12267991117',
@@ -149,7 +150,7 @@ module.exports = (db) => {
         console.log("restaurant");
         res.send();
       });
-  
+
     });
 
     // router.post("/restaurant", (req, res) => {

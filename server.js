@@ -1,10 +1,10 @@
 // load .env data into process.env
 require('dotenv').config();
 
+
 const accountSid = process.env.ACCOUNT_SID;
 const authToken = process.env.ACCOUNT_TOKEN;
 const client = require('twilio')(accountSid, authToken);
-
 
 // Web server config
 const PORT       = process.env.PORT || 8080;
@@ -68,7 +68,7 @@ app.use("/", homepageRoutes(db));
 
 //Create hardcoded db to test registration and login
 const users = {
-  
+
 };
 
 module.exports = users;
