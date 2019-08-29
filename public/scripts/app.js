@@ -342,9 +342,22 @@ $(() => {
 
     $.ajax({
       url: "/sms",
-      method: "POST",
+      method: method,
       data: dataString
     });
 
   });
+
+  $(".registration-button").submit(function(event){
+    event.preventDefault();
+    const data = $(this).parent().serialize();
+    const url = "/registration";
+    const method = "POST";
+
+    $.ajax({
+      url: url,
+      method: method,
+      data: data
+    })
+  })
 });

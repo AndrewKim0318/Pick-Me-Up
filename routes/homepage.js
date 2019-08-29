@@ -152,19 +152,6 @@ module.exports = (db) => {
 
     });
 
-    // router.post("/restaurant", (req, res) => {
-    //   client.messages
-    //   .create({
-    //     from: '+12267991117',
-    //     body: 'restaurant',
-    //     to: process.env.RESTAURANT
-    //   })
-    //   .then(message => {
-    //     console.log(message.sid)
-    //     console.log("restaurant");
-    //     res.send();
-    //   });
-    // })
   });
   return router;
 }
