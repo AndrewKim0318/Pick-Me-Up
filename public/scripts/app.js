@@ -115,7 +115,16 @@ const dataSerializationImitator = function(foodItems, totalCost, name, phoneNumb
 
   console.log(dataString);
   return dataString;
-}
+};
+
+const restoreDefault = function () {
+  let $foodItemContainers = $(".menu-item").children("tbody").children("tr");
+  $foodItemContainers.each(e => {
+    $($foodItemContainers[e]).children(".counter").children(".menu-item-counter").val(0);
+  });
+  $checkoutItemContainer.children("tbody").children(".checkout-item").remove();
+  totalCost = 0;
+};
 
 $(() => {
 
@@ -308,10 +317,8 @@ $(() => {
     event.preventDefault();
 
     if($checkoutItemContainer.children("tbody").children(".checkout-item").length){
-      $checkoutItemContainer.slideUp();
-      $paymentContainer.slideToggle();
-      // $checkoutItemContainer.animate({width: "toggle"});
-      // $paymentContainer.animate({width: "toggle"});
+      $checkoutItemContainer.hide();
+      $paymentContainer.show();
     } else {
       $checkoutItemContainer.addClass("no-item");
       createNoItemAlert();
@@ -332,9 +339,15 @@ $(() => {
     let $number = $(this).parent().children(".form-rows").children("#input-number").val();
 
     $finalMessage.show();
-    $paymentContainer.style.opacity = "0";
+    $paymentContainer.css("opacity", "0");
 
-
+    setTimeout(function() {
+      $finalMessage.hide();
+      $paymentContainer.css("opacity", "1");
+      $paymentContainer.hide();
+      $checkoutItemContainer.slideToggle();
+      restoreDefault();
+    }, 2000)
 
     // const url = "/pay";
     // const method = "POST";
@@ -377,7 +390,7 @@ $(() => {
 
   $(".back-to-checkout-btn").click(function() {
     event.preventDefault();
-    $checkoutItemContainer.slideToggle();
-    $paymentContainer.slideUp();
+    $checkoutItemContainer.show();
+    $paymentContainer.hide();
   })
 });
