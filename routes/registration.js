@@ -48,16 +48,14 @@ module.exports = (db) => {
     db.query(usernameCheckQueryString, usernameCheckQueryParams)
     .then(data => data.rows)
     .then(usernameCheck => {
-      console.log(usernameCheck);
-      console.log(usernameCheck.length);
       if (!usernameCheck.length) {
         const registrationQueryString = `
         INSERT INTO users(name, username, phone_number, password, store_id)
         VALUES ($1, $2, $3, $4, 1) RETURNING *
         `
-    
+
         const registrationQueryParams = [name, username, phoneNumber, hashedPassword];
-        
+
         db.query(registrationQueryString, registrationQueryParams)
         .then(res => res.rows)
         .then(user => {
