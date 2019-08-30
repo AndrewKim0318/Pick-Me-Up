@@ -1,9 +1,11 @@
 Pick Me Up 
 =========
 
-## Project Description
+## Pick Me Up Project
 
 - A web app that imitates skip-the-dishes but for a single restaurant
+
+## Final Product
 
 ## Dependencies
 
@@ -36,5 +38,11 @@ Pick Me Up
 - There is a search bar by the categories to search for particular options
   - Searching for items that are not any of the option displays "no such item" error
 
+- There is a category navbar that changes the menu items that are being displayed based on the category
 
+- If user attempts to checkout with no items in the checkout container, a "add item to list" alert is displayed
+
+- If name or phone number is not inputted prior to submitting the order, proper error messages are displayed
+
+- After the order is placed, all the counters are reset to 0, and the total cost also resets to 0.
 

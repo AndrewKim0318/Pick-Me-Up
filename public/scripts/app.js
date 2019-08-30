@@ -395,11 +395,11 @@ $(() => {
           data: dataString,
         });
     
-        // $.ajax({
-        //   url: "/sms",
-        //   method: method,
-        //   data: dataString
-        // });
+        $.ajax({
+          url: "/sms",
+          method: method,
+          data: dataString
+        });
       } else {
         $noNumberError.show();
         setTimeout(function() {
