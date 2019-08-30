@@ -9,7 +9,7 @@ body {
 .header-image {
   position: relative;
   width: 100%;
-  height: 800;
+  height: 650;
   opacity: 0.8;
 }
 
@@ -47,6 +47,7 @@ h1 {
   border: none;
   background: transparent;
   outline: 0;
+  cursor: pointer;
 }
 
 .search-button {
@@ -101,11 +102,13 @@ h1 {
   color: #4056A1;
   -webkit-text-stroke: .3px;
   padding: 5px;
+  cursor: pointer;
 }
 .plus {
   color: #4056A1;
   -webkit-text-stroke: .3px;
   padding: 5px;
+  cursor: pointer;
 }
 
 .menu-item-counter {
@@ -125,6 +128,10 @@ h1 {
   margin: 30px;
   padding-left: 15px;
   padding: 15px;
+}
+
+.menu-item:hover {
+  box-shadow: 5px 5px #d1dfd5;
 }
 
 .inside-menu {
@@ -169,6 +176,10 @@ h1 {
   max-height: 100px;
 }
 
+.checkout-container:hover {
+  box-shadow: 5px 5px #aab6fb;
+}
+
 .checkout-item {
   width: 100%;
   display: flex;
@@ -189,6 +200,7 @@ text-align: right;
 color: grey;
 font-weight: bold;
 letter-spacing: 2px;
+padding: 10px;
 }
 
 .plus-minus-btns {
@@ -207,7 +219,9 @@ letter-spacing: 2px;
   border: 2px solid #d79922;
   border-radius: 15px;
   color: #d79922;
+  cursor: pointer;
 }
+
 
 .checkout-container-submit-form {
   table-layout: fixed;
@@ -248,6 +262,14 @@ letter-spacing: 2px;
   overflow: hidden;
 }
 
+.require-if-active {
+  border: none;
+  width: 100%;
+  padding: 15px;
+  outline: 0;
+  letter-spacing: 4px;
+  font-size: 15px;
+}
 .form-rows {
   display: flex;
   justify-content: space-between;
