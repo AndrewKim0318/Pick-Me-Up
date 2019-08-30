@@ -441,7 +441,7 @@ $(() => {
       if(data.length){
         switchDisplay(data[0]["category"]);
         $searchContainer.hide();
-  
+
         if($changingIcon[0].className === "fas fa-search"){
           $changingIcon.removeClass("fa-search");
           $changingIcon.addClass("fa-times");
@@ -449,7 +449,7 @@ $(() => {
           $changingIcon.addClass("fa-search");
           $changingIcon.removeClass("fa-times");
         }
-  
+
         $(".search-input").val("");
         return data
       } else {
@@ -475,8 +475,8 @@ $(() => {
   $("#payment-method-person").click(function() {
 
     document.getElementById("payment-method-credit").checked = false;
-    
+
     $(".reveal-when-credit").hide();
-      
+
   });
 });

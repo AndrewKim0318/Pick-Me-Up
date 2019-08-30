@@ -58,6 +58,14 @@
 
 .registration-button {
   grid-row: 6;
+  border: none;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+}
+
+.registration-button:hover {
+  border: 5px solid #d1dfd5;
 }
 
 .registration-label {
