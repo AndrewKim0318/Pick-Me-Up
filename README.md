@@ -6,6 +6,18 @@ Pick Me Up
 - A web app that imitates skip-the-dishes but for a single restaurant
 
 ## Final Product
+- home page
+[!"home-page"](https://github.com/Kimwj0318/Pick-Me-Up/blob/trial/public/docs/Homepage.png)
+- menu
+[!"menu-page"](https://github.com/Kimwj0318/Pick-Me-Up/blob/trial/public/docs/menu-page.png)
+- login page
+[!"login-page"](https://github.com/Kimwj0318/Pick-Me-Up/blob/trial/public/docs/login-page.png)
+- registration page
+[!"registration-page"](https://github.com/Kimwj0318/Pick-Me-Up/blob/trial/public/docs/registration-page.png)
+- edit profile page
+[!"edit-profile-page"](https://github.com/Kimwj0318/Pick-Me-Up/blob/trial/public/docs/edit-profile-page.png)
+- order history page
+[!"order-history-page"](https://github.com/Kimwj0318/Pick-Me-Up/blob/trial/public/docs/order-history-page.png)
 
 ## Dependencies
 
