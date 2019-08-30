@@ -48,8 +48,6 @@ module.exports = (db) => {
     db.query(usernameCheckQueryString, usernameCheckQueryParams)
     .then(data => data.rows)
     .then(usernameCheck => {
-      console.log(usernameCheck);
-      console.log(usernameCheck.length);
       if (!usernameCheck.length) {
         const registrationQueryString = `
         INSERT INTO users(name, username, phone_number, password, store_id)

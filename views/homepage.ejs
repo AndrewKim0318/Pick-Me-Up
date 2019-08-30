@@ -62,19 +62,23 @@
                 <div class="form-rows">
                     <label class="submit-form-label" for="name">Name</label>
                     <input type="text" id="input-name" name="name" value="<%= data[0]["name"]%>" required>
+                    <label class="no-name-in-submit-form" for="no-name-error">Enter in a name!</label>
                 </div><br>
                 <div class="form-rows">
                     <label class="submit-form-label" for="phone">Phone Number</label>
                     <input type="text" id="input-number" name="number" value="<%=data[0]["phone_number"]%>" required>
+                    <label class="no-number-in-submit-form" for="no-number-error">Enter in a phone number!</label>
                 </div><br>
               <% } else { %>
                 <div class="form-rows">
                   <label class="submit-form-label" for="name">Name</label>
                   <input type="text" id="input-name" name="name" placeholder="Name..." required>
+                  <label class="no-name-in-submit-form" for="no-name-error">Enter in a name!</label>
                 </div><br>
                 <div class="form-rows">
                     <label class="submit-form-label" for="phone">Phone Number</label>
                     <input type="text" id="input-number" name="number" placeholder="Phone Number..." required>
+                    <label class="no-number-in-submit-form" for="no-number-error">Enter in a phone number!</label>
                 </div><br>
               <% } %>
             <% } %>

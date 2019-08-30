@@ -22,7 +22,6 @@ module.exports = (db) => {
     db.query(userQueryString, userQueryParams)
     .then(res => res.rows)
     .then(user => {
-      
       if(!user.length) {
         res.redirect("/");
       }
@@ -48,7 +47,6 @@ module.exports = (db) => {
 
           let orderDate = JSON.stringify(orderHistory[i]["order_date"]);
           let formattedDate = orderDate.replace(/(['"])/g,'').slice(0, 10);
-          
           let foodItemQueryString = `
             SELECT item_name
             FROM food_items
@@ -99,7 +97,15 @@ module.exports = (db) => {
             });
           }
         }
-      } 
+      } else {
+        const templateVars = {
+          data: user,
+          dateArray: formatDateArray,
+          costArray: totalCostArray,
+          itemArray: orderArray
+        }
+        res.render('profile', templateVars); 
+      }
     })
   });
 

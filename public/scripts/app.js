@@ -21,6 +21,8 @@ const $finalMessage = $(".final-message");
 const $searchInput = $(".search-input");
 let includedItems = [];
 let totalCost = 0;
+const $noNameError = $(".no-name-in-submit-form");
+const $noNumberError = $(".no-number-in-submit-form");
 
 const insertIntoCheckoutContainer = function(data, id) {
 
@@ -114,7 +116,6 @@ const dataSerializationImitator = function(foodItems, totalCost, name, phoneNumb
     dataString = foodItemNameString + foodItemQuantityString + totalCostString + userNameString + userPhoneNumber;
   });
 
-  console.log(dataString);
   return dataString;
 };
 
@@ -175,6 +176,8 @@ $(() => {
   $searchContainer.hide();
   switchDisplay("pastries");
   $paymentContainer.hide();
+  $noNameError.hide();
+  $noNumberError.hide();
 
   $.ajax({
     url: "/items",
@@ -182,12 +185,10 @@ $(() => {
   })
   .then(foodItems =>{
     for (let foodItem of foodItems) {
-      console.log(foodItem["item_name"]);
       let foodName = foodItem["item_name"];
       let option =$(`
         <option value="${foodName}">${foodName}</option>
       `);
-      console.log(option);
       $("#food-names").append(option);
     }
     return foodItems;
@@ -349,12 +350,14 @@ $(() => {
       $checkoutItemContainer.hide();
       $paymentContainer.show();
     } else {
-      $checkoutItemContainer.addClass("no-item");
-      createNoItemAlert();
-      setTimeout(function() {
-        $checkoutItemContainer.removeClass("no-item");
-        $(".no-item-alert").remove();
-      }, 2000);
+      if (!($checkoutItemContainer.hasClass("no-item"))){
+        $checkoutItemContainer.addClass("no-item");
+        createNoItemAlert();
+        setTimeout(function() {
+          $checkoutItemContainer.removeClass("no-item");
+          $(".no-item-alert").remove();
+        }, 2000);
+      }
     }
   });
 
@@ -366,35 +369,49 @@ $(() => {
     let $totalCost = $tbody.children("tr").children(".chk-out-total").text().replace("Total: $", "");
     let $name = $(this).parent().children(".form-rows").children("#input-name").val();
     let $number = $(this).parent().children(".form-rows").children("#input-number").val();
-
-    $finalMessage.show();
-    $paymentContainer.css("opacity", "0");
-
-    setTimeout(function() {
-      $finalMessage.hide();
-      $paymentContainer.css("opacity", "1");
-      $paymentContainer.hide();
-      $checkoutItemContainer.slideToggle();
-      $("#input-name").val("");
-      $("#input-number").val("");
-      restoreDefault();
-    }, 2000)
-
-    const url = "/pay";
-    const method = "POST";
-    const dataString = dataSerializationImitator($orderedItems, $totalCost, $name, $number);
-
-    $.ajax({
-      url: url,
-      method: method,
-      data: dataString,
-    });
-
-    $.ajax({
-      url: "/sms",
-      method: method,
-      data: dataString
-    });
+    
+    if($name){
+      if($number){
+        $finalMessage.show();
+        $paymentContainer.css("opacity", "0");
+    
+        setTimeout(function() {
+          $finalMessage.hide();
+          $paymentContainer.css("opacity", "1");
+          $paymentContainer.hide();
+          $checkoutItemContainer.slideToggle();
+          // $("#input-name").val("");
+          // $("#input-number").val("");
+          restoreDefault();
+        }, 2000)
+    
+        const url = "/pay";
+        const method = "POST";
+        const dataString = dataSerializationImitator($orderedItems, $totalCost, $name, $number);
+    
+        $.ajax({
+          url: url,
+          method: method,
+          data: dataString,
+        });
+    
+        // $.ajax({
+        //   url: "/sms",
+        //   method: method,
+        //   data: dataString
+        // });
+      } else {
+        $noNumberError.show();
+        setTimeout(function() {
+          $noNumberError.hide();
+        }, 1000);
+      }
+    } else {
+      $noNameError.show();
+      setTimeout(function() {
+        $noNameError.hide();
+      }, 1000);
+    }
 
   });
 
